@@ -25,7 +25,7 @@ public class Button extends JFrame{
         panel.add(pane2, "client");
         setVisible(true);
 
-        JPasswordField pass =new JPasswordField(10);
+        JPasswordField pass =new JPasswordField(20);
         pass.setEchoChar('*');
         contain.add(pass);
 
