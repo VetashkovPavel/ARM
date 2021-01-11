@@ -10,14 +10,14 @@ import javax.swing.event.ChangeListener;
 public class Button extends JFrame{
     private static final long serialVersionUID=1L;
     public JPanel panelRadio, panelRadio2, panelCheck;
-    public JToggleButton butt2;
+    public JToggleButton butt5;
     public Button (){
         super("arm admin AGAT by PVetashkow");
         setDefaultCloseOperation (EXIT_ON_CLOSE);
         Container contain =getContentPane();
         contain.setLayout (new FlowLayout(FlowLayout.LEFT, 20,20));
 
-        JTabbedPane panel=new JTabbedPane();// почему не в заголовке?
+        /*JTabbedPane panel=new JTabbedPane();// почему не в заголовке?
         contain.add( panel, BorderLayout.CENTER);
         JPanel pane1=new JPanel();
         panel.add(pane1, "admin");
@@ -27,7 +27,7 @@ public class Button extends JFrame{
 
         JPasswordField pass =new JPasswordField(20);
         pass.setEchoChar('*');
-        contain.add(pass);
+        contain.add(pass); */ //открыть,если будет 1 общее окно
 
         JButton butt1=new JButton("ping host");
         butt1.addActionListener(new ActListener());
@@ -44,9 +44,23 @@ public class Button extends JFrame{
         JTextField field1=new JTextField ("ip or host name",20);
         contain.add(field1);
 
+        JTextField field2=new JTextField ("ip or host name",20);
+        contain.add(field2);
 
+        JButton butt2=new JButton("set manual");
+        butt2.addActionListener(new ActListener());
+        butt2.addChangeListener(new ChngListener());
+        butt2.addItemListener(new ItemListener(){
+            public void itemStateChanged (ItemEvent e){
+                System.out.println("abracadabra");
+            }
+        });
+        contain.add(butt2);
+        butt2.setBorderPainted(true);
+        butt2.setFocusPainted(false);
+        butt2.setContentAreaFilled(true);
 
-        JButton butt3=new JButton("set manual");
+        JButton butt3=new JButton("set default");
         butt3.addActionListener(new ActListener());
         butt3.addChangeListener(new ChngListener());
         butt3.addItemListener(new ItemListener(){
@@ -58,6 +72,9 @@ public class Button extends JFrame{
         butt3.setBorderPainted(true);
         butt3.setFocusPainted(false);
         butt3.setContentAreaFilled(true);
+
+        JTextField field3=new JTextField ("enter ip or MAC",20);
+        contain.add(field3);
 
         panelRadio=new JPanel(new GridLayout(0,1,0,5));
         panelRadio.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
@@ -72,7 +89,7 @@ public class Button extends JFrame{
 
         panelRadio2=new JPanel(new GridLayout(0,1,0,5));
         panelRadio2.setBorder(BorderFactory.createTitledBorder("Web-interface"));
-        String[] names2={" Kerio Control","MFU interface","Switch"};
+        String[] names2={" Kerio Control","MFU interface","Switch", "запасная кнопка"};
         ButtonGroup butgr2=new ButtonGroup();
         for (int i=0;i<names2.length;i++){
             JRadioButton radio=new JRadioButton (names2[i]);
@@ -93,19 +110,19 @@ public class Button extends JFrame{
         butt4.setFocusPainted(false);
         butt4.setContentAreaFilled(true);
 
-        butt2=new JToggleButton ("start to fix?", false);
-        butt2.addActionListener(new ActListener());
-        butt2.addChangeListener(new ChngListener());
-        butt2.addItemListener(new ItemListener (){
+        butt5=new JToggleButton ("start to fix?", false);
+        butt5.addActionListener(new ActListener());
+        butt5.addChangeListener(new ChngListener());
+        butt5.addItemListener(new ItemListener (){
             public void itemStateChanged(ItemEvent e){
-                String text=(butt2.isSelected())?"accept (yes)":"refuse (no)";
-                butt2.setText(text);
-                panelCheck.setVisible(butt2.isSelected());
+                String text=(butt5.isSelected())?"accept (yes)":"refuse (no)";
+                butt5.setText(text);
+                panelCheck.setVisible(butt5.isSelected());
             }});
-        contain.add(butt2);
-        butt2.setBorderPainted(true);
-        butt2.setFocusPainted(false);
-        butt2.setContentAreaFilled(true);
+        contain.add(butt5);
+        butt5.setBorderPainted(true);
+        butt5.setFocusPainted(false);
+        butt5.setContentAreaFilled(true);
 
         JButton buttfinal=new JButton("EXECUTE!");
         buttfinal.addActionListener(new ActListener());
@@ -122,7 +139,7 @@ public class Button extends JFrame{
         buttfinal.setHorizontalAlignment(SwingConstants.LEFT); //выравнивание не пошло
         buttfinal.setVerticalAlignment(SwingConstants.BOTTOM); //не пошло
 
-        setSize(550,400);
+        setSize(450,550);
         setVisible(true);
     }
     class ActListener implements ActionListener{
