@@ -17,17 +17,8 @@ public class Button extends JFrame{
         Container contain =getContentPane();
         contain.setLayout (new FlowLayout(FlowLayout.LEFT, 20,20));
 
-        /*JTabbedPane panel=new JTabbedPane();// почему не в заголовке?
-        contain.add( panel, BorderLayout.CENTER);
+       JTabbedPane panel=new JTabbedPane(JTabbedPane.TOP);
         JPanel pane1=new JPanel();
-        panel.add(pane1, "admin");
-        JPanel pane2=new JPanel();
-        panel.add(pane2, "client");
-        setVisible(true);
-
-        JPasswordField pass =new JPasswordField(20);
-        pass.setEchoChar('*');
-        contain.add(pass); */ //открыть,если будет 1 общее окно
 
         JButton butt1=new JButton("ping host");
         butt1.addActionListener(new ActListener());
@@ -36,16 +27,16 @@ public class Button extends JFrame{
             public void itemStateChanged(ItemEvent e){
                 System.out.println("something ununderstandable");
             }});
-        contain.add(butt1);
+        pane1.add(butt1);
         butt1.setBorderPainted(true); //очертания кнопки
         butt1.setFocusPainted(false);//очертание названия
         butt1.setContentAreaFilled(true);//блики на кнопке
 
         JTextField field1=new JTextField ("ip or host name",20);
-        contain.add(field1);
+        pane1.add(field1);
 
         JTextField field2=new JTextField ("ip or host name",20);
-        contain.add(field2);
+        pane1.add(field2);
 
         JButton butt2=new JButton("set manual");
         butt2.addActionListener(new ActListener());
@@ -55,7 +46,7 @@ public class Button extends JFrame{
                 System.out.println("abracadabra");
             }
         });
-        contain.add(butt2);
+        pane1.add(butt2);
         butt2.setBorderPainted(true);
         butt2.setFocusPainted(false);
         butt2.setContentAreaFilled(true);
@@ -68,13 +59,13 @@ public class Button extends JFrame{
                 System.out.println("abracadabra");
             }
         });
-        contain.add(butt3);
+        pane1.add(butt3);
         butt3.setBorderPainted(true);
         butt3.setFocusPainted(false);
         butt3.setContentAreaFilled(true);
 
         JTextField field3=new JTextField ("enter ip or MAC",20);
-        contain.add(field3);
+        pane1.add(field3);
 
         panelRadio=new JPanel(new GridLayout(0,1,0,5));
         panelRadio.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
@@ -85,7 +76,7 @@ public class Button extends JFrame{
             panelRadio.add(radio);
             butgr.add(radio);
         }
-        contain.add(panelRadio);
+        pane1.add(panelRadio);
 
         panelRadio2=new JPanel(new GridLayout(0,1,0,5));
         panelRadio2.setBorder(BorderFactory.createTitledBorder("Web-interface"));
@@ -96,7 +87,7 @@ public class Button extends JFrame{
             panelRadio2.add(radio);
             butgr2.add(radio);
         }
-        contain.add(panelRadio2);
+        pane1.add(panelRadio2);
         JButton butt4=new JButton("Remote Viewer");
 
         butt4.addActionListener(new ActListener());
@@ -105,7 +96,7 @@ public class Button extends JFrame{
             public void itemStateChanged(ItemEvent e){
                 //System.out.println("something ununderstandable");
             }});
-        contain.add(butt4);
+        pane1.add(butt4);
         butt4.setBorderPainted(true);
         butt4.setFocusPainted(false);
         butt4.setContentAreaFilled(true);
@@ -119,7 +110,7 @@ public class Button extends JFrame{
                 butt5.setText(text);
                 panelCheck.setVisible(butt5.isSelected());
             }});
-        contain.add(butt5);
+        pane1.add(butt5);
         butt5.setBorderPainted(true);
         butt5.setFocusPainted(false);
         butt5.setContentAreaFilled(true);
@@ -132,15 +123,31 @@ public class Button extends JFrame{
                 System.out.println("ok, working!");
             }
         });
-        contain.add(buttfinal);
+        pane1.add(buttfinal);
         buttfinal.setBorderPainted(true);
         buttfinal.setFocusPainted(false);
         buttfinal.setContentAreaFilled(true);
         buttfinal.setHorizontalAlignment(SwingConstants.LEFT); //выравнивание не пошло
         buttfinal.setVerticalAlignment(SwingConstants.BOTTOM); //не пошло
 
+
         setSize(450,550);
         setVisible(true);
+
+        JPanel pane2=new JPanel();
+
+
+        panel.add(pane1, "Admin");
+        panel.add(pane2, "client");
+        setVisible(true);
+        getContentPane().setLayout(new GridLayout());
+        contain.add( panel, BorderLayout.CENTER);
+
+        JPasswordField pass =new JPasswordField(20);
+        pass.setEchoChar('*');
+        pane1.add(pass);  //открыть,если будет 1 общее окно
+
+
     }
     class ActListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
