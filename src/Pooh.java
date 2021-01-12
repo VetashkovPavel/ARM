@@ -15,39 +15,43 @@ public class Pooh extends JFrame{
     Container contain =getContentPane();
     contain.setLayout (new FlowLayout(FlowLayout.LEFT, 20,20));
 
-       JTextField field1p=new JTextField ("your name&surname",12);
-        contain.add(field1p);
 
-        JTextField field2p=new JTextField ("where are you?");
-        contain.add(field2p);
 
-        JTextField field3p=new JTextField("your cell phone");
-        contain.add(field3p);
+       JTextField field1b=new JTextField ("your name&surname",30);
+        contain.add(field1b);
 
         panelRadio=new JPanel(new GridLayout(0,1,0,5));
         panelRadio.setBorder(BorderFactory.createTitledBorder("What had happend"));
-        String[] names={" No i-net connection","1C is dead","Whole PC is dead","Cup of Coffee"};
-        ButtonGroup butgrp=new ButtonGroup();
+        String[] names={" No I-net connection","1C is dead","Whole PC is dead","Cup of Coffee"};
+        ButtonGroup butgrb=new ButtonGroup();
         for (int i=0;i<names.length;i++){
             JRadioButton radio=new JRadioButton (names[i]);
             panelRadio.add(radio);
-            butgrp.add(radio);
+            butgrb.add(radio);
         }
         contain.add(panelRadio);
 
-        JButton butt1p=new JButton("send");
-        butt1p.addActionListener(new Pooh.ActListener());
-        butt1p.addChangeListener(new Pooh.ChngListener());
-        butt1p.addItemListener(new ItemListener() {
+        JTextField field2b=new JTextField ("where are you?");
+        contain.add(field2b);
+
+        JTextField field3b=new JTextField("your cell phone");
+        contain.add(field3b);
+
+        JButton butt1b=new JButton("send");
+
+        butt1b.addActionListener(new Pooh.ActListener());
+        butt1b.addChangeListener(new Pooh.ChngListener());
+        butt1b.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
                             }});
-        contain.add(butt1p);
-        butt1p.setBorderPainted(true);
-        butt1p.setFocusPainted(false);
-        butt1p.setContentAreaFilled(true);
-        butt1p.setPreferredSize(new Dimension(100,100));
-        //butt1p.setBackground(Color.CYAN); //подобрать не "вырвиглаз"
-        setSize(400,400);
+        contain.add(butt1b);
+        butt1b.setBorderPainted(true);
+        butt1b.setFocusPainted(false);
+        butt1b.setContentAreaFilled(true);
+        butt1b.setHorizontalAlignment(SwingConstants.LEFT); //выравнивание не пошло
+        butt1b.setVerticalAlignment(SwingConstants.BOTTOM); //не пошло
+
+        setSize(550,400);
         setVisible(true);
     }
     class ActListener implements ActionListener{
@@ -62,7 +66,7 @@ public class Pooh extends JFrame{
         }
     }
     public static void main (String[] args){
-        new Pooh();
+        new Button();
     }
 }
 
