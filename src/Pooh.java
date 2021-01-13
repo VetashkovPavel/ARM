@@ -48,6 +48,7 @@ public class Pooh extends JFrame{
         butt1b.setBorderPainted(true);
         butt1b.setFocusPainted(false);
         butt1b.setContentAreaFilled(true);
+        butt1b.setSize(75,75);
         butt1b.setHorizontalAlignment(SwingConstants.LEFT); //выравнивание не пошло
         butt1b.setVerticalAlignment(SwingConstants.BOTTOM); //не пошло
 
@@ -66,7 +67,7 @@ public class Pooh extends JFrame{
         }
     }
     public static void main (String[] args){
-        new Button();
+        new Pooh();
     }
 }
 

@@ -9,7 +9,7 @@ import javax.swing.event.ChangeListener;
 
 public class Button extends JFrame{
     private static final long serialVersionUID=1L;
-    public JPanel panelRadio, panelRadio2, panelCheck;
+    public JPanel panelRadio, panelRadio2, panelRadio3, panelCheck;
     public JToggleButton butt5;
     public Button (){
         super("arm admin AGAT by PVetashkow");
@@ -67,16 +67,16 @@ public class Button extends JFrame{
         JTextField field3=new JTextField ("enter ip or MAC",20);
         pane1.add(field3);
 
-        panelRadio=new JPanel(new GridLayout(0,1,0,5));
-        panelRadio.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
+        panelRadio3=new JPanel(new GridLayout(0,1,0,5));
+        panelRadio3.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
         String[] names={" Active Directory","KSC server","Bolid server","something else"};
-        ButtonGroup butgr=new ButtonGroup();
+        ButtonGroup butgrp2=new ButtonGroup();
         for (int i=0;i<names.length;i++){
             JRadioButton radio=new JRadioButton (names[i]);
-            panelRadio.add(radio);
-            butgr.add(radio);
+            panelRadio3.add(radio);
+            butgrp2.add(radio);
         }
-        pane1.add(panelRadio);
+        pane1.add(panelRadio3);
 
         panelRadio2=new JPanel(new GridLayout(0,1,0,5));
         panelRadio2.setBorder(BorderFactory.createTitledBorder("Web-interface"));
@@ -88,8 +88,8 @@ public class Button extends JFrame{
             butgr2.add(radio);
         }
         pane1.add(panelRadio2);
-        JButton butt4=new JButton("Remote Viewer");
 
+        JButton butt4=new JButton("Remote Viewer");
         butt4.addActionListener(new ActListener());
         butt4.addChangeListener(new ChngListener());
         butt4.addItemListener(new ItemListener() {
@@ -101,12 +101,12 @@ public class Button extends JFrame{
         butt4.setFocusPainted(false);
         butt4.setContentAreaFilled(true);
 
-        butt5=new JToggleButton ("start to fix?", false);
+        butt5=new JToggleButton ("Принимаем заявку?", false);
         butt5.addActionListener(new ActListener());
         butt5.addChangeListener(new ChngListener());
         butt5.addItemListener(new ItemListener (){
             public void itemStateChanged(ItemEvent e){
-                String text=(butt5.isSelected())?"accept (yes)":"refuse (no)";
+                String text=(butt5.isSelected())?"Да (yes)":"Нет (no)";
                 butt5.setText(text);
                 panelCheck.setVisible(butt5.isSelected());
             }});
@@ -134,11 +134,45 @@ public class Button extends JFrame{
         setSize(450,550);
         setVisible(true);
 
-        JPanel pane2=new JPanel();
+        JPanel pane2=new JPanel(); //  -------------------POOH ONE WINDOW ---------------------------
 
+        JTextField field1b=new JTextField ("Введите Фамилию и Имя",30);
+        pane2.add(field1b);
 
+        panelRadio=new JPanel(new GridLayout(0,1,0,5));
+        panelRadio.setBorder(BorderFactory.createTitledBorder("Какая неисправность"));
+        String[] brokens={" Нет Интернета или сети","1C не работает","Весь комп сломался","не работает телефон"};
+        ButtonGroup butgrp=new ButtonGroup();
+        for (int i=0;i<brokens.length;i++){
+            JRadioButton radio=new JRadioButton (brokens[i]);
+            panelRadio.add(radio);
+            butgrp.add(radio);
+        }
+        pane2.add(panelRadio);
+
+        JTextField field2b=new JTextField ("Ваше расположение?");
+        pane2.add(field2b);
+
+        JTextField field3b=new JTextField("Внутренний телефон");
+        pane2.add(field3b);
+
+        JButton butt1b=new JButton("ОТПРАВИТЬ заявку");
+
+        //butt1b.addActionListener(new Pooh.ActListener());
+        //butt1b.addChangeListener(new Pooh.ChngListener());
+        butt1b.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e){
+            }});
+        pane2.add(butt1b);
+        butt1b.setPreferredSize(new Dimension (170,85));
+        butt1b.setBorderPainted(true);
+        butt1b.setFocusPainted(false);
+        butt1b.setContentAreaFilled(true);
+        butt1b.setHorizontalAlignment(SwingConstants.CENTER); //выравнивание не обязательно
+        butt1b.setVerticalAlignment(SwingConstants.CENTER); //оно в пределах кнопки
+
+        panel.add(pane2, "Client Pooh One");
         panel.add(pane1, "Admin");
-        panel.add(pane2, "client");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
         contain.add( panel, BorderLayout.CENTER);
@@ -146,6 +180,11 @@ public class Button extends JFrame{
         JPasswordField pass =new JPasswordField(20);
         pass.setEchoChar('*');
         pane1.add(pass);  //открыть,если будет 1 общее окно
+
+        JOptionPane.showMessageDialog(Button.this,
+                new String[] {"Телефоны Отдела Информационных Технологий:",
+                        "4861 - Леонид, Алексей, Павел", "4548 - Алексей",
+                        "4457 - Владимир Борисович, руководитель подразделения"});
 
 
     }
