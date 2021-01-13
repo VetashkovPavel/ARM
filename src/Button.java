@@ -127,9 +127,8 @@ public class Button extends JFrame{
         buttfinal.setBorderPainted(true);
         buttfinal.setFocusPainted(false);
         buttfinal.setContentAreaFilled(true);
-        buttfinal.setHorizontalAlignment(SwingConstants.LEFT); //выравнивание не пошло
-        buttfinal.setVerticalAlignment(SwingConstants.BOTTOM); //не пошло
-
+        buttfinal.setHorizontalAlignment(SwingConstants.CENTER);
+        buttfinal.setPreferredSize(new Dimension (350, 45));
 
         setSize(450,550);
         setVisible(true);
