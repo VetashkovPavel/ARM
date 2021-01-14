@@ -3,47 +3,51 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class Button extends JFrame{
+public class Button extends JFrame {
     private static final long serialVersionUID=1L;
     public JPanel panelRadio, panelRadio2, panelRadio3, panelCheck;
     public JToggleButton butt5;
-    public Button (){
+        public Button () throws IOException {
         super("arm admin AGAT by PVetashkow");
         setDefaultCloseOperation (EXIT_ON_CLOSE);
         Container contain =getContentPane();
-        contain.setLayout (new FlowLayout(FlowLayout.LEFT, 20,20));
+        contain.setLayout (new FlowLayout(FlowLayout.CENTER));
 
        JTabbedPane panel=new JTabbedPane(JTabbedPane.TOP);
         JPanel pane1=new JPanel();
 
-        JButton butt1=new JButton("ping host");
+        JPasswordField pass =new JPasswordField(35);
+        pass.setEchoChar('*');
+        pane1.add(pass);
+
+        JButton butt1=new JButton("Ping host");
         butt1.addActionListener(new ActListener());
         butt1.addChangeListener(new ChngListener());
         butt1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
-                System.out.println("something ununderstandable");
-            }});
+               }});
         pane1.add(butt1);
         butt1.setBorderPainted(true); //очертания кнопки
         butt1.setFocusPainted(false);//очертание названия
         butt1.setContentAreaFilled(true);//блики на кнопке
 
-        JTextField field1=new JTextField ("ip or host name",20);
+        JTextField field1=new JTextField ("ip или имя хоста",20);
         pane1.add(field1);
 
-        JTextField field2=new JTextField ("ip or host name",20);
+        JTextField field2=new JTextField ("ip или имя хоста",20);
         pane1.add(field2);
 
-        JButton butt2=new JButton("set manual");
+        JButton butt2=new JButton("Установить статику");
         butt2.addActionListener(new ActListener());
         butt2.addChangeListener(new ChngListener());
         butt2.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
-                System.out.println("abracadabra");
+                System.out.println("Static");
             }
         });
         pane1.add(butt2);
@@ -51,12 +55,12 @@ public class Button extends JFrame{
         butt2.setFocusPainted(false);
         butt2.setContentAreaFilled(true);
 
-        JButton butt3=new JButton("set default");
+        JButton butt3=new JButton("Сбросить настройки LAN");
         butt3.addActionListener(new ActListener());
         butt3.addChangeListener(new ChngListener());
         butt3.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
-                System.out.println("abracadabra");
+                System.out.println("default lan");
             }
         });
         pane1.add(butt3);
@@ -64,12 +68,12 @@ public class Button extends JFrame{
         butt3.setFocusPainted(false);
         butt3.setContentAreaFilled(true);
 
-        JTextField field3=new JTextField ("enter ip or MAC",20);
+        JTextField field3=new JTextField ("ip или MAC",20);
         pane1.add(field3);
 
         panelRadio3=new JPanel(new GridLayout(0,1,0,5));
         panelRadio3.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
-        String[] names={" Active Directory","KSC server","Bolid server","something else"};
+        String[] names={" Active Directory","KSC server","Bolid server","1С database server"};
         ButtonGroup butgrp2=new ButtonGroup();
         for (int i=0;i<names.length;i++){
             JRadioButton radio=new JRadioButton (names[i]);
@@ -80,7 +84,7 @@ public class Button extends JFrame{
 
         panelRadio2=new JPanel(new GridLayout(0,1,0,5));
         panelRadio2.setBorder(BorderFactory.createTitledBorder("Web-interface"));
-        String[] names2={" Kerio Control","MFU interface","Switch", "запасная кнопка"};
+        String[] names2={" Kerio Control Center","MFU interface","Switch interface", "запасная кнопка"};
         ButtonGroup butgr2=new ButtonGroup();
         for (int i=0;i<names2.length;i++){
             JRadioButton radio=new JRadioButton (names2[i]);
@@ -94,7 +98,7 @@ public class Button extends JFrame{
         butt4.addChangeListener(new ChngListener());
         butt4.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
-                //System.out.println("something ununderstandable");
+                //System.out.println("something ");
             }});
         pane1.add(butt4);
         butt4.setBorderPainted(true);
@@ -106,7 +110,7 @@ public class Button extends JFrame{
         butt5.addChangeListener(new ChngListener());
         butt5.addItemListener(new ItemListener (){
             public void itemStateChanged(ItemEvent e){
-                String text=(butt5.isSelected())?"Да (yes)":"Нет (no)";
+                String text=(butt5.isSelected())?"Да, принимаю":"Нет, отказываюсь";
                 butt5.setText(text);
                 panelCheck.setVisible(butt5.isSelected());
             }});
@@ -116,7 +120,7 @@ public class Button extends JFrame{
         butt5.setContentAreaFilled(true);
 
         JButton buttfinal=new JButton("EXECUTE!");
-        buttfinal.addActionListener(new ActListener());
+        buttfinal.addActionListener(new ActListadmin());
         buttfinal.addChangeListener(new ChngListener());
         buttfinal.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
@@ -135,12 +139,13 @@ public class Button extends JFrame{
 
         JPanel pane2=new JPanel(); //  -------------------POOH ONE WINDOW ---------------------------
 
-        JTextField field1b=new JTextField ("Введите Фамилию и Имя",30);
-        pane2.add(field1b);
+        JTextField field1p=new JTextField ("Ваша Фамилия",30);
+        pane2.add(field1p);
 
         panelRadio=new JPanel(new GridLayout(0,1,0,5));
-        panelRadio.setBorder(BorderFactory.createTitledBorder("Какая неисправность"));
-        String[] brokens={" Нет Интернета или сети","1C не работает","Весь комп сломался","не работает телефон"};
+        panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
+        String[] brokens={" Нет Интернета или сети","1C не работает","Не включается ПК","не работает телефон",
+                "Установить ПО", "Заменить картридж в МФУ", "ТО системного блока", "Помощь ч/з удаленный доступ"};
         ButtonGroup butgrp=new ButtonGroup();
         for (int i=0;i<brokens.length;i++){
             JRadioButton radio=new JRadioButton (brokens[i]);
@@ -149,56 +154,65 @@ public class Button extends JFrame{
         }
         pane2.add(panelRadio);
 
-        JTextField field2b=new JTextField ("Ваше расположение?");
-        pane2.add(field2b);
+        JTextField field2p=new JTextField ("Ваше расположение",30);
 
-        JTextField field3b=new JTextField("Внутренний телефон");
-        pane2.add(field3b);
+        pane2.add(field2p);
 
-        JButton butt1b=new JButton("ОТПРАВИТЬ заявку");
+        JTextField field3p=new JTextField("Внутренний телефон");
+        pane2.add(field3p);
 
-        //butt1b.addActionListener(new Pooh.ActListener());
-        //butt1b.addChangeListener(new Pooh.ChngListener());
-        butt1b.addItemListener(new ItemListener() {
+        JButton butt1p=new JButton("ОТПРАВИТЬ заявку");
+        butt1p.addActionListener(new Button.ActListener());
+        butt1p.addChangeListener(new Button.ChngListener());
+        butt1p.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
-            }});
-        pane2.add(butt1b);
-        butt1b.setPreferredSize(new Dimension (170,85));
-        butt1b.setBorderPainted(true);
-        butt1b.setFocusPainted(false);
-        butt1b.setContentAreaFilled(true);
-        butt1b.setHorizontalAlignment(SwingConstants.CENTER); //выравнивание не обязательно
-        butt1b.setVerticalAlignment(SwingConstants.CENTER); //оно в пределах кнопки
 
-        panel.add(pane2, "Client Pooh One");
-        panel.add(pane1, "Admin");
+            }});
+        pane2.add(butt1p);
+        butt1p.setPreferredSize(new Dimension (170,85));
+        butt1p.setBorderPainted(true);
+        butt1p.setFocusPainted(false);
+        butt1p.setContentAreaFilled(true);
+        butt1p.setHorizontalAlignment(SwingConstants.CENTER); //выравнивание не обязательно
+        butt1p.setVerticalAlignment(SwingConstants.CENTER); //оно в пределах кнопки
+
+        panel.add(pane2, "Client's  window");
+        panel.add(pane1, "Admin only");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
         contain.add( panel, BorderLayout.CENTER);
 
-        JPasswordField pass =new JPasswordField(20);
-        pass.setEchoChar('*');
-        pane1.add(pass);  //открыть,если будет 1 общее окно
+        JTextArea broketext= new JTextArea (8,32);
+        broketext.setEditable(false);
+        broketext.setText(field1p.getText()+" _ "+field2p.getText()+" _ "+field3p.getText());
+        pane1.add(broketext);
 
         JOptionPane.showMessageDialog(Button.this,
                 new String[] {"Телефоны Отдела Информационных Технологий:",
                         "4861 - Леонид, Алексей, Павел", "4548 - Алексей",
                         "4457 - Владимир Борисович, руководитель подразделения"});
-
-
     }
+
     class ActListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            System.out.println("Pressed => "+e.getActionCommand() );
+            JOptionPane.showMessageDialog(Button.this,
+                    "Заявка отправлена" );
         }
     }
+
+    class ActListadmin implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            JOptionPane.showMessageDialog(Button.this,
+                    "Отправлено, сохранено." );
+        }
+    }
+
     class ChngListener implements ChangeListener{
         public void stateChanged(ChangeEvent e){
             Object src=e.getSource();
-            System.out.println("object was changed  "+src.getClass()); //зачем это? и вывод, и отсылка.
-        }
+              }
     }
-    public static void main (String[] args){
-        new Button();
+    public static void main (String[] args) throws IOException{
+    new Button();
     }
 }
