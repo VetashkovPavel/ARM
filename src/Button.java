@@ -21,12 +21,12 @@ public class Button extends JFrame {
        JTabbedPane panel=new JTabbedPane(JTabbedPane.TOP);
         JPanel pane1=new JPanel();
 
-        JPasswordField pass =new JPasswordField(35);
+        JPasswordField pass =new JPasswordField(40);
         pass.setEchoChar('*');
         pane1.add(pass);
 
         JButton butt1=new JButton("Ping host");
-        butt1.addActionListener(new ActListener());
+        butt1.addActionListener(new ActListener1());
         butt1.addChangeListener(new ChngListener());
         butt1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
@@ -36,13 +36,12 @@ public class Button extends JFrame {
         butt1.setFocusPainted(false);//очертание названия
         butt1.setContentAreaFilled(true);//блики на кнопке
 
-        JTextField field1=new JTextField ("ip или имя хоста",20);
+        JTextField field1=new JTextField (16);
+        JLabel lab1=new JLabel("IP или имя хоста");
+        pane1.add(lab1);
         pane1.add(field1);
 
-        JTextField field2=new JTextField ("ip или имя хоста",20);
-        pane1.add(field2);
-
-        JButton butt2=new JButton("Установить статику");
+        JButton butt2=new JButton("Установить   статику");
         butt2.addActionListener(new ActListener());
         butt2.addChangeListener(new ChngListener());
         butt2.addItemListener(new ItemListener(){
@@ -55,7 +54,12 @@ public class Button extends JFrame {
         butt2.setFocusPainted(false);
         butt2.setContentAreaFilled(true);
 
-        JButton butt3=new JButton("Сбросить настройки LAN");
+        JTextField field2=new JTextField (16);
+        JLabel lab2=new JLabel("IP или имя хоста");
+        pane1.add(lab2);
+        pane1.add(field2);
+
+        JButton butt3=new JButton("Сброс настроек LAN");
         butt3.addActionListener(new ActListener());
         butt3.addChangeListener(new ChngListener());
         butt3.addItemListener(new ItemListener(){
@@ -68,7 +72,9 @@ public class Button extends JFrame {
         butt3.setFocusPainted(false);
         butt3.setContentAreaFilled(true);
 
-        JTextField field3=new JTextField ("ip или MAC",20);
+        JTextField field3=new JTextField (16);
+        JLabel lab3=new JLabel("IP или имя хоста");
+        pane1.add(lab3);
         pane1.add(field3);
 
         panelRadio3=new JPanel(new GridLayout(0,1,0,5));
@@ -134,15 +140,18 @@ public class Button extends JFrame {
         buttfinal.setHorizontalAlignment(SwingConstants.CENTER);
         buttfinal.setPreferredSize(new Dimension (350, 45));
 
-        setSize(450,550);
+        setSize(510,550);
         setVisible(true);
 
         JPanel pane2=new JPanel(); //  -------------------POOH ONE WINDOW ---------------------------
 
-        JTextField field1p=new JTextField ("Ваша Фамилия",30);
+        JTextField field1p=new JTextField (25);
+        JLabel lab1p=new JLabel("Фамилия");
+        pane2.add(lab1p);
         pane2.add(field1p);
 
-        panelRadio=new JPanel(new GridLayout(0,1,0,5));
+
+        panelRadio=new JPanel(new GridLayout(0,2,0,4));
         panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
         String[] brokens={" Нет Интернета или сети","1C не работает","Не включается ПК","не работает телефон",
                 "Установить ПО", "Заменить картридж в МФУ", "ТО системного блока", "Помощь ч/з удаленный доступ"};
@@ -154,11 +163,14 @@ public class Button extends JFrame {
         }
         pane2.add(panelRadio);
 
-        JTextField field2p=new JTextField ("Ваше расположение",30);
-
+        JTextField field2p=new JTextField (30);
+        JLabel lab2p=new JLabel("Ваше расположение");
+        pane2.add(lab2p);
         pane2.add(field2p);
 
-        JTextField field3p=new JTextField("Внутренний телефон");
+        JTextField field3p=new JTextField(10);
+        JLabel lab3p=new JLabel("Внутренний телефон");
+        pane2.add(lab3p);
         pane2.add(field3p);
 
         JButton butt1p=new JButton("ОТПРАВИТЬ заявку");
@@ -205,6 +217,13 @@ public class Button extends JFrame {
             JOptionPane.showMessageDialog(Button.this,
                     "Отправлено, сохранено." );
         }
+    }
+
+    class ActListener1 implements ActionListener{
+            public void actionPerformed(ActionEvent e){
+               // Runtime run1=new Runtime;
+              //  run1.getRunTime().exec("cmd start C:\\Users\\oit17\\Desktop\\Настройки сети для директора\\mylan");
+            }
     }
 
     class ChngListener implements ChangeListener{
