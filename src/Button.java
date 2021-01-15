@@ -21,9 +21,18 @@ public class Button extends JFrame {
        JTabbedPane panel=new JTabbedPane(JTabbedPane.TOP);
         JPanel pane1=new JPanel();
 
+        BorderLayout border=new BorderLayout();
+        pane1.setLayout(border);
+
+        JPanel pane3=new JPanel();
         JPasswordField pass =new JPasswordField(40);
         pass.setEchoChar('*');
-        pane1.add(pass);
+        pane3.add(pass);
+        pane3.setVisible(true);
+
+        pane1.add("North", pane3); //почему name??????
+
+        JPanel pane4=new JPanel();
 
         JButton butt1=new JButton("Ping host");
         butt1.addActionListener(new ActListener1());
@@ -31,15 +40,15 @@ public class Button extends JFrame {
         butt1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
                }});
-        pane1.add(butt1);
+        pane4.add(butt1);
         butt1.setBorderPainted(true); //очертания кнопки
         butt1.setFocusPainted(false);//очертание названия
         butt1.setContentAreaFilled(true);//блики на кнопке
 
         JTextField field1=new JTextField (16);
         JLabel lab1=new JLabel("IP или имя хоста");
-        pane1.add(lab1);
-        pane1.add(field1);
+        pane4.add(lab1);
+        pane4.add(field1);
 
         JButton butt2=new JButton("Установить   статику");
         butt2.addActionListener(new ActListener());
@@ -49,15 +58,15 @@ public class Button extends JFrame {
                 System.out.println("Static");
             }
         });
-        pane1.add(butt2);
+        pane4.add(butt2);
         butt2.setBorderPainted(true);
         butt2.setFocusPainted(false);
         butt2.setContentAreaFilled(true);
 
         JTextField field2=new JTextField (16);
         JLabel lab2=new JLabel("IP или имя хоста");
-        pane1.add(lab2);
-        pane1.add(field2);
+        pane4.add(lab2);
+        pane4.add(field2);
 
         JButton butt3=new JButton("Сброс настроек LAN");
         butt3.addActionListener(new ActListener());
@@ -67,15 +76,15 @@ public class Button extends JFrame {
                 System.out.println("default lan");
             }
         });
-        pane1.add(butt3);
+        pane4.add(butt3);
         butt3.setBorderPainted(true);
         butt3.setFocusPainted(false);
         butt3.setContentAreaFilled(true);
 
         JTextField field3=new JTextField (16);
         JLabel lab3=new JLabel("IP или имя хоста");
-        pane1.add(lab3);
-        pane1.add(field3);
+        pane4.add(lab3);
+        pane4.add(field3);
 
         panelRadio3=new JPanel(new GridLayout(0,1,0,5));
         panelRadio3.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
@@ -86,7 +95,7 @@ public class Button extends JFrame {
             panelRadio3.add(radio);
             butgrp2.add(radio);
         }
-        pane1.add(panelRadio3);
+        pane4.add(panelRadio3);
 
         panelRadio2=new JPanel(new GridLayout(0,1,0,5));
         panelRadio2.setBorder(BorderFactory.createTitledBorder("Web-interface"));
@@ -97,7 +106,7 @@ public class Button extends JFrame {
             panelRadio2.add(radio);
             butgr2.add(radio);
         }
-        pane1.add(panelRadio2);
+        pane4.add(panelRadio2);
 
         JButton butt4=new JButton("Remote Viewer");
         butt4.addActionListener(new ActListener());
@@ -106,7 +115,7 @@ public class Button extends JFrame {
             public void itemStateChanged(ItemEvent e){
                 //System.out.println("something ");
             }});
-        pane1.add(butt4);
+        pane4.add(butt4);
         butt4.setBorderPainted(true);
         butt4.setFocusPainted(false);
         butt4.setContentAreaFilled(true);
@@ -116,11 +125,11 @@ public class Button extends JFrame {
         butt5.addChangeListener(new ChngListener());
         butt5.addItemListener(new ItemListener (){
             public void itemStateChanged(ItemEvent e){
-                String text=(butt5.isSelected())?"Да, принимаю":"Нет, отказываюсь";
+                String text=(butt5.isSelected())?"Да, принимаю  ":"Нет, отказываюсь";
                 butt5.setText(text);
                 panelCheck.setVisible(butt5.isSelected());
             }});
-        pane1.add(butt5);
+        pane4.add(butt5);
         butt5.setBorderPainted(true);
         butt5.setFocusPainted(false);
         butt5.setContentAreaFilled(true);
@@ -133,12 +142,14 @@ public class Button extends JFrame {
                 System.out.println("ok, working!");
             }
         });
-        pane1.add(buttfinal);
+        pane4.add(buttfinal);
         buttfinal.setBorderPainted(true);
         buttfinal.setFocusPainted(false);
         buttfinal.setContentAreaFilled(true);
         buttfinal.setHorizontalAlignment(SwingConstants.CENTER);
         buttfinal.setPreferredSize(new Dimension (350, 45));
+
+        pane1.add(pane4);
 
         setSize(510,550);
         setVisible(true);
@@ -151,7 +162,7 @@ public class Button extends JFrame {
         pane2.add(field1p);
 
 
-        panelRadio=new JPanel(new GridLayout(0,2,0,4));
+        panelRadio=new JPanel(new GridLayout(0,2,6,4)); //табличное расположение
         panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
         String[] brokens={" Нет Интернета или сети","1C не работает","Не включается ПК","не работает телефон",
                 "Установить ПО", "Заменить картридж в МФУ", "ТО системного блока", "Помощь ч/з удаленный доступ"};
@@ -197,7 +208,7 @@ public class Button extends JFrame {
         JTextArea broketext= new JTextArea (8,32);
         broketext.setEditable(false);
         broketext.setText(field1p.getText()+" _ "+field2p.getText()+" _ "+field3p.getText());
-        pane1.add(broketext);
+        pane4.add(broketext);
 
         JOptionPane.showMessageDialog(Button.this,
                 new String[] {"Телефоны Отдела Информационных Технологий:",
