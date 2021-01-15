@@ -123,7 +123,7 @@ public class Button extends JFrame {
         butt5=new JToggleButton ("Принимаем заявку?", false);
         butt5.addActionListener(new ActListener());
         butt5.addChangeListener(new ChngListener());
-        butt5.addItemListener(new ItemListener (){
+        butt5.addItemListener(new ItemListener (){ //...............нужен change listener
             public void itemStateChanged(ItemEvent e){
                 String text=(butt5.isSelected())?"Да, принимаю  ":"Нет, отказываюсь";
                 butt5.setText(text);
@@ -136,12 +136,7 @@ public class Button extends JFrame {
 
         JButton buttfinal=new JButton("EXECUTE!");
         buttfinal.addActionListener(new ActListadmin());
-        buttfinal.addChangeListener(new ChngListener());
-        buttfinal.addItemListener(new ItemListener(){
-            public void itemStateChanged (ItemEvent e){
-                System.out.println("ok, working!");
-            }
-        });
+
         pane4.add(buttfinal);
         buttfinal.setBorderPainted(true);
         buttfinal.setFocusPainted(false);
@@ -186,11 +181,8 @@ public class Button extends JFrame {
 
         JButton butt1p=new JButton("ОТПРАВИТЬ заявку");
         butt1p.addActionListener(new Button.ActListener());
-        butt1p.addChangeListener(new Button.ChngListener());
-        butt1p.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent e){
 
-            }});
+
         pane2.add(butt1p);
         butt1p.setPreferredSize(new Dimension (170,85));
         butt1p.setBorderPainted(true);
