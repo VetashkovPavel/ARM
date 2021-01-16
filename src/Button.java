@@ -222,10 +222,14 @@ public class Button extends JFrame {
         }
     }
 
-    class ActListener1 implements ActionListener{
+    class ActListener1 implements ActionListener{// на кнопке PING висит
             public void actionPerformed(ActionEvent e){
-               // Runtime run1=new Runtime;
-              //  run1.getRunTime().exec("cmd start C:\\Users\\oit17\\Desktop\\Настройки сети для директора\\mylan");
+                try{
+               Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\Pavel\\Desktop\\labafilesA33.bat");
+                   }
+                catch (Exception a){
+                    a.printStackTrace();
+                }
             }
     }
 
