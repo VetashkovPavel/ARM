@@ -51,7 +51,7 @@ public class Button extends JFrame {
         pane4.add(field1);
 
         JButton butt2=new JButton("Установить   статику");
-        butt2.addActionListener(new ActListener());
+        butt2.addActionListener(new ActListener2());
         butt2.addChangeListener(new ChngListener());
         butt2.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
@@ -68,8 +68,8 @@ public class Button extends JFrame {
         pane4.add(lab2);
         pane4.add(field2);
 
-        JButton butt3=new JButton("Сброс настроек LAN");
-        butt3.addActionListener(new ActListener());
+        JButton butt3=new JButton("Просмотр настроек LAN");
+        butt3.addActionListener(new ActListener3());
         butt3.addChangeListener(new ChngListener());
         butt3.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
@@ -82,7 +82,7 @@ public class Button extends JFrame {
         butt3.setContentAreaFilled(true);
 
         JTextField field3=new JTextField (16);
-        JLabel lab3=new JLabel("IP или имя хоста");
+        JLabel lab3=new JLabel("IP, имя MAC хоста");
         pane4.add(lab3);
         pane4.add(field3);
 
@@ -108,7 +108,7 @@ public class Button extends JFrame {
         }
         pane4.add(panelRadio2);
 
-        JButton butt4=new JButton("Remote Viewer");
+        JButton butt4=new JButton("Remote Viewer"); //сделать выпадающее меню адреса
         butt4.addActionListener(new ActListener());
         butt4.addChangeListener(new ChngListener());
         butt4.addItemListener(new ItemListener() {
@@ -197,7 +197,7 @@ public class Button extends JFrame {
         getContentPane().setLayout(new GridLayout());
         contain.add( panel, BorderLayout.CENTER);
 
-        JTextArea broketext= new JTextArea (8,32);
+        JTextArea broketext= new JTextArea (8,32); // запилить в ActionListener, иначе считывает дефизы
         broketext.setEditable(false);
         broketext.setText(field1p.getText()+" _ "+field2p.getText()+" _ "+field3p.getText());
         pane4.add(broketext);
@@ -227,6 +227,20 @@ public class Button extends JFrame {
                // Runtime run1=new Runtime;
               //  run1.getRunTime().exec("cmd start C:\\Users\\oit17\\Desktop\\Настройки сети для директора\\mylan");
             }
+    }
+
+    class ActListener2 implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            JOptionPane.showMessageDialog(Button.this,
+                    "Настройки установлены" );
+        }
+    }
+
+    class ActListener3 implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            JOptionPane.showMessageDialog(Button.this,
+                    "Просмотр недоступен" );
+        }
     }
 
     class ChngListener implements ChangeListener{
