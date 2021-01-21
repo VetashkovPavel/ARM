@@ -86,6 +86,24 @@ public class Button extends JFrame {
         pane4.add(lab3);
         pane4.add(field3);
 
+            JButton butt41=new JButton("Trial reset RWiever");
+            butt41.addActionListener(new ActListener41());
+            butt41.addChangeListener(new ChngListener());
+            butt41.addItemListener(new ItemListener(){
+                public void itemStateChanged (ItemEvent e){
+                    System.out.println("default lan");  // Лёхин батник
+                }
+            });
+            pane4.add(butt41);
+            butt41.setBorderPainted(true);
+            butt41.setFocusPainted(false);
+            butt41.setContentAreaFilled(true);
+
+            JTextField field4=new JTextField (16);
+            JLabel lab4=new JLabel("IP, имя MAC хоста");
+            pane4.add(lab4);
+            pane4.add(field4);
+
         panelRadio3=new JPanel(new GridLayout(0,1,0,5));
         panelRadio3.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
         String[] names={" Active Directory","KSC server","Bolid server","1С database server"};
@@ -244,6 +262,19 @@ public class Button extends JFrame {
         public void actionPerformed(ActionEvent e){
             JOptionPane.showMessageDialog(Button.this,
                     "Просмотр недоступен" );
+        }
+    }
+
+    class ActListener41 implements ActionListener{// на кнопке PING висит
+        public void actionPerformed(ActionEvent e){
+            try{
+                Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\batping.bat");
+            }
+            catch (Exception a){
+                a.printStackTrace();
+            }
+            JOptionPane.showMessageDialog(Button.this,
+                    "Демонстрационный период сброшен. Подключайтесь через минуту" );
         }
     }
 
