@@ -225,7 +225,7 @@ public class Button extends JFrame {
     class ActListener1 implements ActionListener{// на кнопке PING висит
             public void actionPerformed(ActionEvent e){
                 try{
-               Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\Pavel\\Desktop\\labafilesA33.bat");
+               Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\Pavel\\Desktop\\justbat.bat");
                    }
                 catch (Exception a){
                     a.printStackTrace();
