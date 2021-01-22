@@ -3,10 +3,12 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 public class Pooh extends JFrame{
+
     private static final long serialVersionUID=1L;
     public JPanel panelRadio;
     public Pooh(){
@@ -15,58 +17,99 @@ public class Pooh extends JFrame{
     Container contain =getContentPane();
     contain.setLayout (new FlowLayout(FlowLayout.LEFT, 20,20));
 
+        JPanel pane2=new JPanel();
+
+        JTextField field1p=new JTextField (25);
+        JLabel lab1p=new JLabel("Фамилия");
+        pane2.add(lab1p);
+        pane2.add(field1p);
 
 
-       JTextField field1b=new JTextField ("your name&surname",30);
-        contain.add(field1b);
 
-        panelRadio=new JPanel(new GridLayout(0,1,0,5));
-        panelRadio.setBorder(BorderFactory.createTitledBorder("What had happend"));
-        String[] names={" No I-net connection","1C is dead","Whole PC is dead","Cup of Coffee"};
-        ButtonGroup butgrb=new ButtonGroup();
-        for (int i=0;i<names.length;i++){
-            JRadioButton radio=new JRadioButton (names[i]);
+        panelRadio=new JPanel(new GridLayout(0,2,6,4)); //табличное расположение
+        panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
+        String[] brokens={" Нет Интернета или сети","1C не работает","Не включается ПК","не работает телефон",
+                "Установить ПО", "Заменить картридж в МФУ", "ТО системного блока", "Помощь ч/з удаленный доступ"};
+        ButtonGroup butgrp=new ButtonGroup();
+        for (int i=0;i<brokens.length;i++){
+            JRadioButton radio=new JRadioButton (brokens[i]);
             panelRadio.add(radio);
-            butgrb.add(radio);
+            butgrp.add(radio);
         }
-        contain.add(panelRadio);
+        pane2.add(panelRadio);
 
-        JTextField field2b=new JTextField ("where are you?");
-        contain.add(field2b);
+        JTextField field2p=new JTextField (30);
+        JLabel lab2p=new JLabel("Ваше расположение");
+        pane2.add(lab2p);
+        pane2.add(field2p);
 
-        JTextField field3b=new JTextField("your cell phone");
-        contain.add(field3b);
+        JTextField field3p=new JTextField(10);
+        JLabel lab3p=new JLabel("Внутренний телефон");
+        pane2.add(lab3p);
+        pane2.add(field3p);
 
-        JButton butt1b=new JButton("send");
+        JButton butt1p=new JButton("ОТПРАВИТЬ заявку");
+        butt1p.addActionListener(new Pooh.ActListener());
 
-        butt1b.addActionListener(new Pooh.ActListener());
-        butt1b.addChangeListener(new Pooh.ChngListener());
-        butt1b.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent e){
-                            }});
-        contain.add(butt1b);
-        butt1b.setBorderPainted(true);
-        butt1b.setFocusPainted(false);
-        butt1b.setContentAreaFilled(true);
-        butt1b.setSize(75,75);
-        butt1b.setHorizontalAlignment(SwingConstants.LEFT); //выравнивание не пошло
-        butt1b.setVerticalAlignment(SwingConstants.BOTTOM); //не пошло
 
-        setSize(550,400);
+        pane2.add(butt1p);
+        butt1p.setPreferredSize(new Dimension (170,85));
+        butt1p.setBorderPainted(true);
+        butt1p.setFocusPainted(false);
+        butt1p.setContentAreaFilled(true);
+        butt1p.setHorizontalAlignment(SwingConstants.CENTER);
+        butt1p.setVerticalAlignment(SwingConstants.CENTER);
+
+        getContentPane().setLayout(new GridLayout());
+        contain.add( pane2, BorderLayout.CENTER);
+        setSize(510,550);
         setVisible(true);
+
+
+        JOptionPane.showMessageDialog(Pooh.this,
+                new String[] {"Телефоны Отдела Информационных Технологий:",
+                        "4861 - Леонид, Алексей, Павел", "4548 - Алексей",
+                        "4457 - Владимир Борисович, руководитель подразделения"});
     }
+
     class ActListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            System.out.println("Pressed => "+e.getActionCommand() );
+            JOptionPane.showMessageDialog(Pooh.this,
+                    "Заявка отправлена" );
         }
     }
+
+    class ActListadmin implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            JOptionPane.showMessageDialog(Pooh.this,
+                    "Отправлено, сохранено." );
+        }
+    }
+
+
+    class ActListener2 implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            JOptionPane.showMessageDialog(Pooh.this,
+                    "Настройки установлены" );
+        }
+    }
+
+    class ActListener3 implements ActionListener{
+        public void actionPerformed(ActionEvent e){
+            JOptionPane.showMessageDialog(Pooh.this,
+                    "Просмотр недоступен" );
+        }
+    }
+
+
+
+
     class ChngListener implements ChangeListener{
         public void stateChanged(ChangeEvent e){
             Object src=e.getSource();
-            System.out.println("object was changed  "+src.getClass()); //зачем это? и вывод, и отсылка.
         }
     }
-    public static void main (String[] args){
+       public static void main (String[] args){
         new Pooh();
     }
 }
