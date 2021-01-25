@@ -74,6 +74,8 @@ public class Pooh extends JFrame{
 
     class ActListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
+
+            //считать .getText с полей и выбор неиспр, отправить строкой на сервер.
             JOptionPane.showMessageDialog(Pooh.this,
                     "Заявка отправлена" );
         }
