@@ -1,3 +1,5 @@
+import javafx.scene.input.InputMethodTextRun;
+
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
@@ -74,14 +76,16 @@ public class Pooh extends JFrame{
 
     class ActListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
+            String surname=new String(field1p.getText());
+            String place=field2p.getText();
+            String phone=field3p.getText();
 
-            //считать .getText с полей и выбор неиспр, отправить строкой на сервер.
             JOptionPane.showMessageDialog(Pooh.this,
                     "Заявка отправлена" );
         }
     }
 
-    class ActListadmin implements ActionListener{
+   /* class ActListadmin implements ActionListener{
         public void actionPerformed(ActionEvent e){
             JOptionPane.showMessageDialog(Pooh.this,
                     "Отправлено, сохранено." );
@@ -101,7 +105,7 @@ public class Pooh extends JFrame{
             JOptionPane.showMessageDialog(Pooh.this,
                     "Просмотр недоступен" );
         }
-    }
+    }*/
 
 
 
