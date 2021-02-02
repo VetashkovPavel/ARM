@@ -14,6 +14,7 @@ public class Pooh extends JFrame{
     private static final long serialVersionUID=1L;
     public JPanel panelRadio;
     public JTextField field1p, field2p, field3p;
+    String surname, place, phone;
     public Pooh(){
     super("PoohOne job AGAT by PVetashkow");
     setDefaultCloseOperation (EXIT_ON_CLOSE);
@@ -23,7 +24,7 @@ public class Pooh extends JFrame{
         JPanel pane2=new JPanel();
 
         JTextField field1p=new JTextField (25);
-        JLabel lab1p=new JLabel("Фамилия");
+        JLabel lab1p=new JLabel("Ваша Фамилия");
         pane2.add(lab1p);
         pane2.add(field1p);
 
@@ -31,7 +32,7 @@ public class Pooh extends JFrame{
 
         panelRadio=new JPanel(new GridLayout(0,2,6,4)); //табличное расположение
         panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
-       // ButtonGroup butgrp=new ButtonGroup();// не понадобился, но пусть пока будет
+       // ButtonGroup butgrp=new ButtonGroup();// не понадобился, но пусть пока будет. потом удалю
         JRadioButton inet=new JRadioButton("Нет интернета", false);
         panelRadio.add(inet);
         JRadioButton c=new JRadioButton("1C не работает", false);
@@ -43,7 +44,9 @@ public class Pooh extends JFrame{
         JRadioButton soft=new JRadioButton("Установить ПО", false);
         panelRadio.add(soft);
         JRadioButton mfu=new JRadioButton("Заменить картридж в МФУ", false);
-       panelRadio.add(mfu);
+        panelRadio.add(mfu);
+        JRadioButton printer=new JRadioButton("Проблемы с принтером",false);
+        panelRadio.add(printer);
         JRadioButton technic=new JRadioButton("ТО системного блока", false);
         panelRadio.add(technic);
         JRadioButton remote=new JRadioButton("Помощь ч/з удаленный доступ", false);
@@ -86,48 +89,32 @@ public class Pooh extends JFrame{
                         "4457 - Владимир Борисович, руководитель подразделения"});
     }
 
-    class ActListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            String surname=new String(field1p.getText());
-            String place=field2p.getText();
-            String phone=field3p.getText();
+    class ActListener implements ActionListener {
+        public void actionPerformed(ActionEvent e)throws NullPointerException{
+            try {
+                if(surname == null){
+                    surname=field1p.getText();}
+                if (place==null){
+                place = field2p.getText();}
+                if (phone==null){
+                phone = field3p.getText();}
+           }
+            catch (Exception a){
+                a.printStackTrace();
+            };
 
             JOptionPane.showMessageDialog(Pooh.this,
-                    "Заявка отправлена ("+field1p.getText()+")"); //не считывает
+                    "Заявка отправлена "+surname);
+            System.out.println(surname+" "+place+" "+phone);//не считывает
         }
     }
 
-   /* class ActListadmin implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(Pooh.this,
-                    "Отправлено, сохранено." );
-        }
-    }
-
-
-    class ActListener2 implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(Pooh.this,
-                    "Настройки установлены" );
-        }
-    }
-
-    class ActListener3 implements ActionListener{
-        public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(Pooh.this,
-                    "Просмотр недоступен" );
-        }
-    }*/
-
-
-
-
-    class ChngListener implements ChangeListener{
+    /*class ChngListener implements ChangeListener{
         public void stateChanged(ChangeEvent e){
             Object src=e.getSource();
         }
-    }
-       public static void main (String[] args){
+    }*/
+       public static void main (String[] args) {
         new Pooh();
     }
 }
