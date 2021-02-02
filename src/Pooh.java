@@ -13,6 +13,7 @@ public class Pooh extends JFrame{
 
     private static final long serialVersionUID=1L;
     public JPanel panelRadio;
+    public JTextField field1p, field2p, field3p;
     public Pooh(){
     super("PoohOne job AGAT by PVetashkow");
     setDefaultCloseOperation (EXIT_ON_CLOSE);
@@ -30,14 +31,25 @@ public class Pooh extends JFrame{
 
         panelRadio=new JPanel(new GridLayout(0,2,6,4)); //табличное расположение
         panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
-        String[] brokens={" Нет Интернета или сети","1C не работает","Не включается ПК","не работает телефон",
-                "Установить ПО", "Заменить картридж в МФУ", "ТО системного блока", "Помощь ч/з удаленный доступ"};
-        ButtonGroup butgrp=new ButtonGroup();
-        for (int i=0;i<brokens.length;i++){
-            JRadioButton radio=new JRadioButton (brokens[i]);
-            panelRadio.add(radio);
-            butgrp.add(radio);
-        }
+       // ButtonGroup butgrp=new ButtonGroup();// не понадобился, но пусть пока будет
+        JRadioButton inet=new JRadioButton("Нет интернета", false);
+        panelRadio.add(inet);
+        JRadioButton c=new JRadioButton("1C не работает", false);
+        panelRadio.add(c);
+        JRadioButton pk=new JRadioButton("Не включается ПК", false);
+        panelRadio.add(pk);
+        JRadioButton tlf=new JRadioButton("Не исправен телефон", false);
+        panelRadio.add(tlf);
+        JRadioButton soft=new JRadioButton("Установить ПО", false);
+        panelRadio.add(soft);
+        JRadioButton mfu=new JRadioButton("Заменить картридж в МФУ", false);
+       panelRadio.add(mfu);
+        JRadioButton technic=new JRadioButton("ТО системного блока", false);
+        panelRadio.add(technic);
+        JRadioButton remote=new JRadioButton("Помощь ч/з удаленный доступ", false);
+        panelRadio.add(remote);
+
+
         pane2.add(panelRadio);
 
         JTextField field2p=new JTextField (30);
@@ -81,7 +93,7 @@ public class Pooh extends JFrame{
             String phone=field3p.getText();
 
             JOptionPane.showMessageDialog(Pooh.this,
-                    "Заявка отправлена" );
+                    "Заявка отправлена ("+field1p.getText()+")"); //не считывает
         }
     }
 
