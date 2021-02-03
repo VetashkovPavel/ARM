@@ -7,18 +7,17 @@ import java.io.IOException;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
-
-public class Button extends JFrame {
+public class Admin extends JFrame {
     private static final long serialVersionUID=1L;
     public JPanel panelRadio, panelRadio2, panelRadio3, panelCheck;
     public JToggleButton butt5;
-        public Button () throws IOException {
+    public Admin () throws IOException {
         super("arm admin AGAT by PVetashkow");
         setDefaultCloseOperation (EXIT_ON_CLOSE);
         Container contain =getContentPane();
         contain.setLayout (new FlowLayout(FlowLayout.CENTER));
 
-       JTabbedPane panel=new JTabbedPane(JTabbedPane.TOP);
+        JTabbedPane panel=new JTabbedPane(JTabbedPane.TOP);
         JPanel pane1=new JPanel();
 
         BorderLayout border=new BorderLayout();
@@ -35,11 +34,11 @@ public class Button extends JFrame {
         JPanel pane4=new JPanel();
 
         JButton butt1=new JButton("Ping host");
-        butt1.addActionListener(new ActListener1());
-        butt1.addChangeListener(new ChngListener());
+        butt1.addActionListener(new Admin.ActListener1());
+        butt1.addChangeListener(new Admin.ChngListener());
         butt1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
-               }});
+            }});
         pane4.add(butt1);
         butt1.setBorderPainted(true); //очертания кнопки
         butt1.setFocusPainted(false);//очертание названия
@@ -51,8 +50,8 @@ public class Button extends JFrame {
         pane4.add(field1);
 
         JButton butt2=new JButton("Установить   статику");
-        butt2.addActionListener(new ActListener2());
-        butt2.addChangeListener(new ChngListener());
+        butt2.addActionListener(new Admin.ActListener2());
+        butt2.addChangeListener(new Admin.ChngListener());
         butt2.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
                 System.out.println("Static");
@@ -69,8 +68,8 @@ public class Button extends JFrame {
         pane4.add(field2);
 
         JButton butt3=new JButton("Просмотр настроек LAN");
-        butt3.addActionListener(new ActListener3());
-        butt3.addChangeListener(new ChngListener());
+        butt3.addActionListener(new Admin.ActListener3());
+        butt3.addChangeListener(new Admin.ChngListener());
         butt3.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
                 System.out.println("default lan");
@@ -86,23 +85,23 @@ public class Button extends JFrame {
         pane4.add(lab3);
         pane4.add(field3);
 
-            JButton butt41=new JButton("Trial reset RViewer");
-            butt41.addActionListener(new ActListener41());
-            butt41.addChangeListener(new ChngListener());
-            butt41.addItemListener(new ItemListener(){
-                public void itemStateChanged (ItemEvent e){
-                    System.out.println("default lan");  // Лёхин батник
-                }
-            });
-            pane4.add(butt41);
-            butt41.setBorderPainted(true);
-            butt41.setFocusPainted(false);
-            butt41.setContentAreaFilled(true);
+        JButton butt41=new JButton("Trial reset RViewer");
+        butt41.addActionListener(new Admin.ActListener41());
+        butt41.addChangeListener(new Admin.ChngListener());
+        butt41.addItemListener(new ItemListener(){
+            public void itemStateChanged (ItemEvent e){
+                System.out.println("default lan");  // Лёхин батник
+            }
+        });
+        pane4.add(butt41);
+        butt41.setBorderPainted(true);
+        butt41.setFocusPainted(false);
+        butt41.setContentAreaFilled(true);
 
-            JTextField field4=new JTextField (16);
-            JLabel lab4=new JLabel("IP, имя MAC хоста");
-            pane4.add(lab4);
-            pane4.add(field4);
+        JTextField field4=new JTextField (16);
+        JLabel lab4=new JLabel("IP, имя MAC хоста");
+        pane4.add(lab4);
+        pane4.add(field4);
 
         panelRadio3=new JPanel(new GridLayout(0,1,0,5));
         panelRadio3.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
@@ -127,19 +126,19 @@ public class Button extends JFrame {
         pane4.add(panelRadio2);
 
         JButton butt4=new JButton("Remote Viewer"); //сделать выпадающее меню адреса
-        butt4.addActionListener(new ActListener());
-        butt4.addChangeListener(new ChngListener());
+        butt4.addActionListener(new Admin.ActListener());
+        butt4.addChangeListener(new Admin.ChngListener());
         butt4.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
-               }});
+            }});
         pane4.add(butt4);
         butt4.setBorderPainted(true);
         butt4.setFocusPainted(false);
         butt4.setContentAreaFilled(true);
 
         butt5=new JToggleButton ("Принимаем заявку?", false);
-        butt5.addActionListener(new ActListener());
-        butt5.addChangeListener(new ChngListener());
+        butt5.addActionListener(new Admin.ActListener());
+        butt5.addChangeListener(new Admin.ChngListener());
         butt5.addItemListener(new ItemListener (){ //...............нужен change listener
             public void itemStateChanged(ItemEvent e){
                 String text=(butt5.isSelected())?"Да, принимаю  ":"Нет, отказываюсь";
@@ -152,7 +151,7 @@ public class Button extends JFrame {
         butt5.setContentAreaFilled(true);
 
         JButton buttfinal=new JButton("EXECUTE!");
-        buttfinal.addActionListener(new ActListadmin());
+        buttfinal.addActionListener(new Admin.ActListadmin());
 
         pane4.add(buttfinal);
         buttfinal.setBorderPainted(true);
@@ -168,7 +167,7 @@ public class Button extends JFrame {
 
         JPanel pane2=new JPanel(); //  -------------------POOH ONE WINDOW ---------------------------
 
-        JTextField field1p=new JTextField (25);
+        /*JTextField field1p=new JTextField (25);
         JLabel lab1p=new JLabel("Фамилия");
         pane2.add(lab1p);
         pane2.add(field1p);
@@ -194,21 +193,21 @@ public class Button extends JFrame {
         JTextField field3p=new JTextField(10);
         JLabel lab3p=new JLabel("Внутренний телефон");
         pane2.add(lab3p);
-        pane2.add(field3p);
+        pane2.add(field3p);*/
 
-        JButton butt1p=new JButton("ОТПРАВИТЬ заявку");
-        butt1p.addActionListener(new Button.ActListener());
+       // JButton butt1p=new JButton("ОТПРАВИТЬ заявку");
+       // butt1p.addActionListener(new Button.ActListener());
 
 
-        pane2.add(butt1p);
-        butt1p.setPreferredSize(new Dimension (170,85));
-        butt1p.setBorderPainted(true);
-        butt1p.setFocusPainted(false);
-        butt1p.setContentAreaFilled(true);
-        butt1p.setHorizontalAlignment(SwingConstants.CENTER); //выравнивание не обязательно
-        butt1p.setVerticalAlignment(SwingConstants.CENTER); //оно в пределах кнопки
+        //pane2.add(butt1p);
+       // butt1p.setPreferredSize(new Dimension (170,85));
+       // butt1p.setBorderPainted(true);
+       // butt1p.setFocusPainted(false);
+      //  butt1p.setContentAreaFilled(true);
+      //  butt1p.setHorizontalAlignment(SwingConstants.CENTER); //выравнивание не обязательно
+      //  butt1p.setVerticalAlignment(SwingConstants.CENTER); //оно в пределах кнопки
 
-        panel.add(pane2, "Client's  window");
+        /*panel.add(pane2, "Client's  window");
         panel.add(pane1, "Admin only");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
@@ -223,43 +222,43 @@ public class Button extends JFrame {
                 new String[] {"Телефоны Отдела Информационных Технологий:",
                         "4861 - Леонид, Алексей, Павел", "4548 - Алексей",
                         "4457 - Владимир Борисович, руководитель подразделения"});
-    }
+    }*/
 
-    class ActListener implements ActionListener{
+    /*class ActListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(Button.this,
+            JOptionPane.showMessageDialog(Admin.this,
                     "Заявка отправлена" );
         }
-    }
+    }*/
 
-    class ActListadmin implements ActionListener{
+  /*  class ActListadmin implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(Button.this,
+            JOptionPane.showMessageDialog(Admin.this,
                     "Отправлено, сохранено." );
         }
-    }
+    }*/
 
     class ActListener1 implements ActionListener{// на кнопке PING висит
-            public void actionPerformed(ActionEvent e){
-                try{
-               Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\Pavel\\Desktop\\labafilesA33.bat");
-                   }
-                catch (Exception a){
-                    a.printStackTrace();
-                }
+        public void actionPerformed(ActionEvent e){
+            try{
+                Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\Pavel\\Desktop\\labafilesA33.bat");
             }
+            catch (Exception a){
+                a.printStackTrace();
+            }
+        }
     }
 
     class ActListener2 implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(Button.this,
+            JOptionPane.showMessageDialog(Admin.this,
                     "Настройки установлены" );
         }
     }
 
     class ActListener3 implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            JOptionPane.showMessageDialog(Button.this,
+            JOptionPane.showMessageDialog(Admin.this,
                     "Просмотр недоступен" );
         }
     }
@@ -272,7 +271,7 @@ public class Button extends JFrame {
             catch (Exception a){
                 a.printStackTrace();
             }
-            JOptionPane.showMessageDialog(Button.this,
+            JOptionPane.showMessageDialog(Admin.this,
                     "Демонстрационный период сброшен. Подключайтесь через минуту" );
         }
     }
@@ -280,9 +279,10 @@ public class Button extends JFrame {
     class ChngListener implements ChangeListener{
         public void stateChanged(ChangeEvent e){
             Object src=e.getSource();
-              }
+        }
     }
     public static void main (String[] args) throws IOException{
-    new Button();
+        new Admin();
     }
+}
 }

@@ -23,7 +23,7 @@ public class Pooh extends JFrame{
 
         JPanel pane2=new JPanel();
 
-        JTextField field1p=new JTextField (25);
+        field1p=new JTextField (25);
         JLabel lab1p=new JLabel("Ваша Фамилия");
         pane2.add(lab1p);
         pane2.add(field1p);
@@ -55,12 +55,12 @@ public class Pooh extends JFrame{
 
         pane2.add(panelRadio);
 
-        JTextField field2p=new JTextField (30);
+        field2p=new JTextField (30);
         JLabel lab2p=new JLabel("Ваше расположение");
         pane2.add(lab2p);
         pane2.add(field2p);
 
-        JTextField field3p=new JTextField(10);
+        field3p=new JTextField(10);
         JLabel lab3p=new JLabel("Внутренний телефон");
         pane2.add(lab3p);
         pane2.add(field3p);
@@ -104,8 +104,8 @@ public class Pooh extends JFrame{
             };
 
             JOptionPane.showMessageDialog(Pooh.this,
-                    "Заявка отправлена "+surname);
-            System.out.println(surname+" "+place+" "+phone);//не считывает
+                    "Заявка отправлена ("+surname+", отдел: "+place+", тлф "+phone+")");
+            //System.out.println(surname+" "+place+" "+phone);//не считывает
         }
     }
 
