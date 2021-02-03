@@ -13,7 +13,7 @@ public class Button extends JFrame {
     public JPanel panelRadio, panelRadio2, panelRadio3, panelCheck;
     public JToggleButton butt5;
         public Button () throws IOException {
-        super("arm admin AGAT by PVetashkow");
+        super("ARM AGAT by PVetashkow");
         setDefaultCloseOperation (EXIT_ON_CLOSE);
         Container contain =getContentPane();
         contain.setLayout (new FlowLayout(FlowLayout.CENTER));
