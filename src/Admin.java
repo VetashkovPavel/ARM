@@ -11,7 +11,7 @@ public class Admin extends JFrame {
     private static final long serialVersionUID=1L;
     public JPanel panelRadio2, panelRadio3, panelCheck;
     public JToggleButton butt5;
-    public JTextField field1;
+    public JTextField field1, field2,field3;
     public String ping, stat, check, trial;
     public Admin () throws IOException {
         super("arm admin AGAT by PVetashkow");
