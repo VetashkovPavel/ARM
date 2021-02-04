@@ -195,16 +195,16 @@ public class Admin extends JFrame {
         }
     }
 
-    class ActListenerping implements ActionListener {// на кнопке PING висит
+    class ActListenerping implements ActionListener {
         public void actionPerformed(ActionEvent e)throws NullPointerException{
 
             try{
                 if (ping==null) {
                     ping=field1.getText();}
 
-                BufferedWriter bwrtr =new BufferedWriter (new FileWriter("D:\\pingfile.bat"));
+                BufferedWriter bwrtr =new BufferedWriter (new FileWriter("D:\\pingfile.bat"));// файл создает, но
                 if (pingfile.exists()) {
-                    System.out.println("File will be rewrited");
+                    System.out.println("File will be rewrited");// не записывает в него
                 }
                 else {
                     pingfile.createNewFile();
@@ -212,7 +212,7 @@ public class Admin extends JFrame {
                 String str="ping ";
                     bwrtr.write(str+ping);
                     bwrtr.close();
-                JOptionPane.showMessageDialog( Admin.this, " Пингуем "+field1.getText());
+                JOptionPane.showMessageDialog( Admin.this, " Пингуем хост "+ping);
                 Process proc = Runtime.getRuntime().exec("cmd /C start D:\\pingfile.bat");
             }
             catch (Exception a){
@@ -227,7 +227,7 @@ public class Admin extends JFrame {
                 if (stat==null){stat=field2.getText();}
 
             JOptionPane.showMessageDialog(Admin.this,
-                    "Настройки установлены"+field2.getText() );}
+                    "Настройки установлены "+stat );}
             catch (Exception a){a.printStackTrace();}
         }
     }
@@ -253,7 +253,7 @@ public class Admin extends JFrame {
                 a.printStackTrace();
             }
             JOptionPane.showMessageDialog(Admin.this,
-                    "Демонстрационный период у "+trial+" сброшен. Подключайтесь через минуту" );
+                    "Демонстрационный период у "+trial+" будет сброшен. Подключайтесь через минуту" );
         }
     }
 
