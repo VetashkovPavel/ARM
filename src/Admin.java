@@ -3,6 +3,9 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.*;
+import java.io.FileWriter;
 import java.io.IOException;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -11,8 +14,9 @@ public class Admin extends JFrame {
     private static final long serialVersionUID=1L;
     public JPanel panelRadio2, panelRadio3, panelCheck;
     public JToggleButton butt5;
-    public JTextField field1, field2,field3;
+    public JTextField field1, field2,field3, field4;
     public String ping, stat, check, trial;
+    public File pingfile;
     public Admin () throws IOException {
         super("arm admin AGAT by PVetashkow");
         setDefaultCloseOperation (EXIT_ON_CLOSE);
@@ -44,13 +48,13 @@ public class Admin extends JFrame {
         butt1.setFocusPainted(false);//очертание названия
         butt1.setContentAreaFilled(true);//блики на кнопке
 
-        JTextField field1=new JTextField (16);
+         field1=new JTextField (16);
         JLabel lab1=new JLabel("IP или имя хоста");
         pane4.add(lab1);
         pane4.add(field1);
 
         JButton butt2=new JButton("Установить   статику");
-        butt2.addActionListener(new Admin.ActListener2());
+        butt2.addActionListener(new Admin.ActListenerstat());
         butt2.addChangeListener(new Admin.ChngListener());
         butt2.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
@@ -62,13 +66,13 @@ public class Admin extends JFrame {
         butt2.setFocusPainted(false);
         butt2.setContentAreaFilled(true);
 
-        JTextField field2=new JTextField (16);
+        field2=new JTextField (16);
         JLabel lab2=new JLabel("IP или имя хоста");
         pane4.add(lab2);
         pane4.add(field2);
 
         JButton butt3=new JButton("Просмотр настроек LAN");
-        butt3.addActionListener(new Admin.ActListener3());
+        butt3.addActionListener(new Admin.ActListenercheck());
         butt3.addChangeListener(new Admin.ChngListener());
         butt3.addItemListener(new ItemListener(){
             public void itemStateChanged (ItemEvent e){
@@ -80,7 +84,7 @@ public class Admin extends JFrame {
         butt3.setFocusPainted(false);
         butt3.setContentAreaFilled(true);
 
-        JTextField field3=new JTextField (16);
+        field3=new JTextField (16);
         JLabel lab3=new JLabel("IP, имя MAC хоста");
         pane4.add(lab3);
         pane4.add(field3);
@@ -98,7 +102,7 @@ public class Admin extends JFrame {
         butt41.setFocusPainted(false);
         butt41.setContentAreaFilled(true);
 
-        JTextField field4=new JTextField (16);
+        field4=new JTextField (16);
         JLabel lab4=new JLabel("IP, имя MAC хоста");
         pane4.add(lab4);
         pane4.add(field4);
@@ -169,15 +173,18 @@ public class Admin extends JFrame {
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
 
-        JOptionPane.showMessageDialog(Admin.this,
-                new String[] {"ActionListener не забудь исправить!"});
+       // JOptionPane.showMessageDialog(Admin.this,
+               // new String[] {"ActionListener не забудь исправить!"});
     }
 
 
     class ActListener implements ActionListener{
-        public void actionPerformed(ActionEvent e){
+        public void actionPerformed(ActionEvent e) throws RuntimeException{
             JOptionPane.showMessageDialog(Admin.this,
-                    "Заявка отправлена" );
+                    "Запускаем Remote Admin" );
+            try{
+            Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\Radmin.exe");}
+            catch (RuntimeException | IOException c){c.printStackTrace();}
         }
     }
 
@@ -194,44 +201,63 @@ public class Admin extends JFrame {
             try{
                 if (ping==null) {
                     ping=field1.getText();}
+
+                BufferedWriter bwrtr =new BufferedWriter (new FileWriter("D:\\pingfile.bat"));
+                if (pingfile.exists()) {
+                    System.out.println("File will be rewrited");
+                }
+                else {
+                    pingfile.createNewFile();
+                }
+                String str="ping ";
+                    bwrtr.write(str+ping);
+                    bwrtr.close();
                 JOptionPane.showMessageDialog( Admin.this, " Пингуем "+field1.getText());
-               // Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\Pavel\\Desktop\\labafilesA33.bat");
+                Process proc = Runtime.getRuntime().exec("cmd /C start D:\\pingfile.bat");
             }
             catch (Exception a){
                 a.printStackTrace();
             }
-            finally {JOptionPane.showMessageDialog(Admin.this, "Ошибка!");}
         }
     }
 
-    class ActListener2 implements ActionListener{
-        public void actionPerformed(ActionEvent e){
+    class ActListenerstat implements ActionListener{
+        public void actionPerformed(ActionEvent e) throws NullPointerException{
+            try {
+                if (stat==null){stat=field2.getText();}
+
             JOptionPane.showMessageDialog(Admin.this,
-                    "Настройки установлены" );
+                    "Настройки установлены"+field2.getText() );}
+            catch (Exception a){a.printStackTrace();}
         }
     }
 
-    class ActListener3 implements ActionListener{
-        public void actionPerformed(ActionEvent e){
+    class ActListenercheck implements ActionListener{
+        public void actionPerformed(ActionEvent e) throws NullPointerException{
+            try {
+                if (check==null){check=field3.getText();}
+
             JOptionPane.showMessageDialog(Admin.this,
-                    "Просмотр недоступен" );
+                    "Подключаемся к "+check);}
+            catch(Exception b){b.printStackTrace();}
         }
     }
 
-    class ActListener41 implements ActionListener{// на кнопке PING висит
+    class ActListener41 implements ActionListener{
         public void actionPerformed(ActionEvent e){
             try{
+                if (trial==null){trial=field4.getText();}
                 Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\batping.bat");
             }
             catch (Exception a){
                 a.printStackTrace();
             }
             JOptionPane.showMessageDialog(Admin.this,
-                    "Демонстрационный период сброшен. Подключайтесь через минуту" );
+                    "Демонстрационный период у "+trial+" сброшен. Подключайтесь через минуту" );
         }
     }
 
-    class ChngListener implements ChangeListener{
+   class ChngListener implements ChangeListener{
         public void stateChanged(ChangeEvent e){
             Object src=e.getSource();
         }
