@@ -1,5 +1,9 @@
 import javafx.scene.input.InputMethodTextRun;
 
+import java.io.*;
+import java.net.Socket;
+import java.net.UnknownHostException;
+
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
@@ -15,6 +19,7 @@ public class Pooh extends JFrame{
     public JPanel panelRadio;
     public JTextField field1p, field2p, field3p;
     String surname, place, phone;
+    Socket socket;
     public Pooh(){
     super("PoohOne job AGAT by PVetashkow");
     setDefaultCloseOperation (EXIT_ON_CLOSE);
@@ -90,7 +95,7 @@ public class Pooh extends JFrame{
     }
 
     class ActListener implements ActionListener {
-        public void actionPerformed(ActionEvent e)throws NullPointerException{
+        public void actionPerformed(ActionEvent e)throws NullPointerException {
             try {
                 if(surname == null){
                     surname=field1p.getText();}
@@ -98,14 +103,42 @@ public class Pooh extends JFrame{
                 place = field2p.getText();}
                 if (phone==null){
                 phone = field3p.getText();}
+
+                (socket = new Socket("localhost", 3345)) {
+
+                    //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                    DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
+                    DataInputStream dis = new DataInputStream(socket.getInputStream());
+
+                    while (!socket.isOutputShutdown()) {
+                       // if (br.ready()) {
+                            System.out.println("started");
+                            String text = surname+" "+place+" "+phone;
+                            dos.writeUTF(text);
+                            dos.flush();
+                            System.out.println("text is _ " + text);
+
+                            if (dis.read() > -1) {
+                                System.out.println("nothing");
+                                String in = dis.readUTF();
+                                System.out.println("or " + in);
+                            }
+                            break;
+                        }
+            //catch(UnknownHostException e){
+                      //  e.printStackTrace();
+                   }
+
+                    //}
+                } catch(IOException c){c.printStackTrace();
+               // }
            }
             catch (Exception a){
                 a.printStackTrace();
             };
-
             JOptionPane.showMessageDialog(Pooh.this,
                     "Заявка отправлена ("+surname+", отдел: "+place+", тлф "+phone+")");
-            //System.out.println(surname+" "+place+" "+phone);//не считывает
+
         }
     }
 
