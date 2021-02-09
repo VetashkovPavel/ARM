@@ -14,7 +14,7 @@ public class Server {
             DataInputStream input =new DataInputStream(client.getInputStream());
             System.out.println("поток чтения создан");
 
-            while(!client.isClosed()){
+            while(/*!client.isClosed()*/1==1){
                 System.out.println("сервер считывает");
                 String entry=input.readUTF();
                 System.out.println("прочитано: "+entry);

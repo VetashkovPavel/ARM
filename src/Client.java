@@ -27,7 +27,7 @@ public class Client {
                         String in = dis.readUTF();
                         System.out.println("or " + in);
                     }
-                    break;
+                   break;
                     }
             //catch(UnknownHostException e){
               //          e.printStackTrace();

@@ -181,11 +181,12 @@ public class Button extends JFrame {
         ButtonGroup butgrp=new ButtonGroup();
         for (int i=0;i<brokens.length;i++){
             JRadioButton radio=new JRadioButton (brokens[i]);
+            radio.setActionCommand(brokens[i]);
             panelRadio.add(radio);
             butgrp.add(radio);
         }
         pane2.add(panelRadio);
-
+            butgrp.getSelection().getActionCommand();
         JTextField field2p=new JTextField (30);
         JLabel lab2p=new JLabel("Ваше расположение");
         pane2.add(lab2p);
