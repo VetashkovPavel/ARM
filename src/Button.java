@@ -13,7 +13,7 @@ public class Button extends JFrame {
     public JPanel panelRadio, panelRadio2, panelRadio3, panelCheck;
     public JToggleButton butt5;
         public Button () throws IOException {
-        super("arm admin AGAT by PVetashkow");
+        super("ARM AGAT by PVetashkow");
         setDefaultCloseOperation (EXIT_ON_CLOSE);
         Container contain =getContentPane();
         contain.setLayout (new FlowLayout(FlowLayout.CENTER));
@@ -86,7 +86,7 @@ public class Button extends JFrame {
         pane4.add(lab3);
         pane4.add(field3);
 
-            JButton butt41=new JButton("Trial reset RWiever");
+            JButton butt41=new JButton("Trial reset RViewer");
             butt41.addActionListener(new ActListener41());
             butt41.addChangeListener(new ChngListener());
             butt41.addItemListener(new ItemListener(){
@@ -131,8 +131,7 @@ public class Button extends JFrame {
         butt4.addChangeListener(new ChngListener());
         butt4.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e){
-                //System.out.println("something ");
-            }});
+               }});
         pane4.add(butt4);
         butt4.setBorderPainted(true);
         butt4.setFocusPainted(false);
