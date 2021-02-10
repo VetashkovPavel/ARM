@@ -153,7 +153,7 @@ public class Pooh extends JFrame {
                 a.printStackTrace();
             }
             JOptionPane.showMessageDialog(Pooh.this,
-                    "Заявка отправлена (" + surname + ", отдел: " + place + ", тлф " + phone + ")");
+                    "Заявка отправлена ("+broke +" у "+ surname + ", отдел: " + place + ", тлф " + phone + ")");
 
         }
     }
