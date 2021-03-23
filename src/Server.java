@@ -3,6 +3,8 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 
 public class Server {
     public static void main(String[] args) throws IOException{
@@ -18,6 +20,10 @@ public class Server {
                 System.out.println("сервер считывает");
                 String entry=input.readUTF();
                 System.out.println("прочитано: "+entry);
+                BufferedWriter bwrtr=new BufferedWriter(new FileWriter("D:\\list.txt"));
+                bwrtr.write(entry);
+                bwrtr.close();
+
 
                 if(entry.equalsIgnoreCase(" name")){
                     out.writeUTF("something "+entry);
@@ -29,6 +35,7 @@ public class Server {
                 }
             }
         }
+
         catch(IOException e){
             e.printStackTrace();
         }

@@ -70,7 +70,7 @@ public class Pooh extends JFrame {
         panelRadio=new JPanel(new GridLayout(0,2,6,4)); //табличное расположение
         panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
         String[] brokens={" Нет Интернета или сети","1C не работает","Не включается ПК","не работает телефон",
-                "Установить ПО", "Заменить картридж в МФУ", "ТО системного блока", "Помощь ч/з удаленный доступ"};
+                "Установить программы", "Принтеры, сканеры, МФУ", "ТО системного блока", "Помощь ч/з удаленный доступ"};
         butgrp=new ButtonGroup();
         for (int i=0;i<brokens.length;i++){
             JRadioButton radio=new JRadioButton (brokens[i]);

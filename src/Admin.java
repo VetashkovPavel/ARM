@@ -15,7 +15,7 @@ public class Admin extends JFrame {
     public JPanel panelRadio2, panelRadio3, panelCheck;
     public JToggleButton butt5;
     public JTextField field1, field2,field3, field4;
-    public String ping, stat, check, trial;
+    public String ping, stat, check, trial, broke;
     public File pingfile;
     public Admin () throws IOException {
         super("arm admin AGAT by PVetashkow");
@@ -173,8 +173,12 @@ public class Admin extends JFrame {
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
 
-       // JOptionPane.showMessageDialog(Admin.this,
-               // new String[] {"ActionListener не забудь исправить!"});
+        JTextArea broketext= new JTextArea (8,32); // запилить в ActionListener, иначе считывает дефизы
+        broketext.setEditable(false);
+        broketext.setText(broke);
+        pane4.add(broketext);
+
+
     }
 
 
