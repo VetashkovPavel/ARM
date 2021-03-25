@@ -134,11 +134,6 @@ public class Pooh extends JFrame {
                   dos.flush();
                     System.out.println("text is _ " + text);
 
-                   /* if (dis.read() > -1) {
-                        System.out.println("nothing");
-                        String in = dis.readUTF();
-                        System.out.println("or " + in);
-                    }*/
                    break;
                 }
             //   }
@@ -154,6 +149,7 @@ public class Pooh extends JFrame {
             }
             JOptionPane.showMessageDialog(Pooh.this,
                     "Заявка отправлена ("+broke +" у "+ surname + ", отдел: " + place + ", тлф " + phone + ")");
+            /*контроль: можно в виде arraylist запросить из файла list */
 
         }
     }
