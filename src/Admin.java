@@ -292,7 +292,7 @@ public class Admin extends JFrame {
                 DataInputStream input = new DataInputStream(client.getInputStream());
                 System.out.println("поток чтения создан");
 
-                while (/*!client.isClosed()*/1 == 1) {
+                while (true) {
                     System.out.println("сервер считывает");
                     String entry = input.readUTF();
                     System.out.println("прочитано: " + entry);
