@@ -129,10 +129,10 @@ public class Pooh extends JFrame {
                while (!socket.isOutputShutdown()) {
                    //  if (br.ready()) {
                     System.out.println("started");
-                    String text = broke+" "+surname + " " + place + " " + phone;
+                    String text = broke+" у "+surname + " в " + place + ", тел " + phone;
                   dos.writeUTF(text);
                   dos.flush();
-                    System.out.println("text is _ " + text);
+                    System.out.println("передано _ " + text);
 
                    break;
                 }

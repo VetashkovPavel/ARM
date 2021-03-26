@@ -33,13 +33,8 @@ public class Server {
                     out.flush();
                     input.close();
                     out.close();
-                    client.close();
-                     //break;
-                      //}
-                    //  }
-        /*} catch (IOException e) {
-            e.printStackTrace();
-        } */ //проба
+                    client.close();}
+                     //проба ретрансляции заявки
 
                     Socket second = new Socket("localhost", 3030);
                     // }
@@ -54,7 +49,7 @@ public class Server {
                         System.out.println("text is _ " + text);
                         break;
                     }
-                }}
+                }//}
     }
         catch(
     UnknownHostException g)

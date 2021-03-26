@@ -182,7 +182,7 @@ public class Admin extends JFrame {
         getContentPane().setLayout(new GridLayout());
         JTextArea broketext = new JTextArea(8, 32); // запилить в ActionListener, иначе считывает дефизы
         broketext.setEditable(false);
-        broketext.setText("не видит entry");
+        broketext.setText("пока останавливаюсь на всплывающих. далее буду дорабатывать");
         pane4.add(broketext);
 
 
@@ -282,14 +282,14 @@ public class Admin extends JFrame {
                 Object src = e.getSource();
             }
         }
-        public static void main (String[]args) throws Exception {
+        public static void main(String[] args) throws Exception {
             new Admin();
             try (ServerSocket srv = new ServerSocket(3030)) {
-                Socket client = srv.accept();
+                Socket second = srv.accept();
                 System.out.println("Соединение разрешено");
-                DataOutputStream out = new DataOutputStream(client.getOutputStream());
+                DataOutputStream out = new DataOutputStream(second.getOutputStream());
                 System.out.println("Поток записи создан");
-                DataInputStream input = new DataInputStream(client.getInputStream());
+                DataInputStream input = new DataInputStream(second.getInputStream());
                 System.out.println("поток чтения создан");
 
                 while (true) {
@@ -297,10 +297,11 @@ public class Admin extends JFrame {
                     String entry = input.readUTF();
                     System.out.println("прочитано: " + entry);
                     //BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\list.txt", true));
-                 //   bwrtr.write(" " + entry + "\r\n");
+                 // bwrtr.write(" " + entry + "\r\n");
                   //  bwrtr.close();
 
-
+JOptionPane.showInputDialog(entry);
+second.close();
                 /*if (entry.equalsIgnoreCase(" name")) {
                     out.writeUTF("something " + entry);
                     out.flush();
