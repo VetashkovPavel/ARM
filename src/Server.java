@@ -9,7 +9,6 @@ import java.net.UnknownHostException;
 
 public class Server {
    // Socket second;
-
     public static void main(String[] args) throws IOException {
 
         try (ServerSocket server = new ServerSocket(3345)) {
@@ -27,17 +26,12 @@ public class Server {
             bwrtr.write(" " + entry + "\r\n");
             bwrtr.close();
             client.close();
+            out.flush();
+            out.close();
 
-                if (entry.equalsIgnoreCase(" name")) {
-                    out.writeUTF("something " + entry);
-                    out.flush();
-                    input.close();
-                    out.close();
-                    client.close();}
                      //проба ретрансляции заявки
 
                     Socket second = new Socket("localhost", 3030);
-                    // }
                     DataOutputStream dos = new DataOutputStream(second.getOutputStream());
 
                     while (!second.isOutputShutdown()) {
@@ -46,10 +40,12 @@ public class Server {
                         String text = entry;
                         dos.writeUTF(text);
                         dos.flush();
-                        System.out.println("text is _ " + text);
+                        dos.close();
+                        System.out.println("передано _ " + text);
                         break;
                     }
-                }//}
+                    second.close();
+                }
     }
         catch(
     UnknownHostException g)

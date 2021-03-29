@@ -122,21 +122,21 @@ public class Pooh extends JFrame {
             broke = butgrp.getSelection().getActionCommand();
             try {
                 socket = new Socket("localhost", 3345);
-                //BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+                BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
-              //  DataInputStream dis = new DataInputStream(socket.getInputStream());
+                DataInputStream dis = new DataInputStream(socket.getInputStream());
 
                while (!socket.isOutputShutdown()) {
-                   //  if (br.ready()) {
+
                     System.out.println("started");
                     String text = broke+" у "+surname + " в " + place + ", тел " + phone;
                   dos.writeUTF(text);
                   dos.flush();
                     System.out.println("передано _ " + text);
-
+                    socket.close();
                    break;
                 }
-            //   }
+
             }
             catch(UnknownHostException g) {
                 g.printStackTrace();

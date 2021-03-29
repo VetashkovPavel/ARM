@@ -14,6 +14,7 @@ import java.net.Socket;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
 public class Admin extends JFrame {
     private static final long serialVersionUID = 1L;
     public JPanel panelRadio2, panelRadio3, panelCheck;
@@ -186,104 +187,106 @@ public class Admin extends JFrame {
         pane4.add(broketext);
 
 
-        }
+    }
 
-        class ActListener implements ActionListener {
-            public void actionPerformed(ActionEvent e) throws RuntimeException {
+    class ActListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws RuntimeException {
+            JOptionPane.showMessageDialog(Admin.this,
+                    "Запускаем Remote Admin");
+            try {
+                Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\Radmin.exe");
+            } catch (RuntimeException | IOException c) {
+                c.printStackTrace();
+            }
+        }
+    }
+
+    class ActListadmin implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            JOptionPane.showMessageDialog(Admin.this,
+                    "ВЫПОЛНЕНО, сохранено."); //executing button
+        }
+    }
+
+    class ActListenerping implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws NullPointerException {
+
+            try {
+                if (ping == null) {
+                    ping = field1.getText();
+                }
+
+                BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\pingfile.bat"));// файл создает, но
+                if (pingfile.exists()) {
+                    System.out.println("File will be rewrited");// не записывает в него
+                } else {
+                    pingfile.createNewFile();
+                }
+                String str = "ping ";
+                bwrtr.write(str + ping);
+                bwrtr.close();
+                JOptionPane.showMessageDialog(Admin.this, " Пингуем хост " + ping);
+                Process proc = Runtime.getRuntime().exec("cmd /C start D:\\pingfile.bat");
+            } catch (Exception a) {
+                a.printStackTrace();
+            }
+        }
+    }
+
+    class ActListenerstat implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws NullPointerException {
+            try {
+                if (stat == null) {
+                    stat = field2.getText();
+                }
+
                 JOptionPane.showMessageDialog(Admin.this,
-                        "Запускаем Remote Admin");
-                try {
-                    Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\Radmin.exe");
-                } catch (RuntimeException | IOException c) {
-                    c.printStackTrace();
-                }
+                        "Настройки установлены " + stat);
+            } catch (Exception a) {
+                a.printStackTrace();
             }
         }
+    }
 
-        class ActListadmin implements ActionListener {
-            public void actionPerformed(ActionEvent e) {
+    class ActListenercheck implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws NullPointerException {
+            try {
+                if (check == null) {
+                    check = field3.getText();
+                }
+
                 JOptionPane.showMessageDialog(Admin.this,
-                        "ВЫПОЛНЕНО, сохранено."); //executing button
+                        "Подключаемся к " + check);
+            } catch (Exception b) {
+                b.printStackTrace();
             }
         }
+    }
 
-        class ActListenerping implements ActionListener {
-            public void actionPerformed(ActionEvent e) throws NullPointerException {
-
-                try {
-                    if (ping == null) {
-                        ping = field1.getText();
-                    }
-
-                    BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\pingfile.bat"));// файл создает, но
-                    if (pingfile.exists()) {
-                        System.out.println("File will be rewrited");// не записывает в него
-                    } else {
-                        pingfile.createNewFile();
-                    }
-                    String str = "ping ";
-                    bwrtr.write(str + ping);
-                    bwrtr.close();
-                    JOptionPane.showMessageDialog(Admin.this, " Пингуем хост " + ping);
-                    Process proc = Runtime.getRuntime().exec("cmd /C start D:\\pingfile.bat");
-                } catch (Exception a) {
-                    a.printStackTrace();
+    class ActListener41 implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+                if (trial == null) {
+                    trial = field4.getText();
                 }
+                Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\batping.bat");
+            } catch (Exception a) {
+                a.printStackTrace();
             }
+            JOptionPane.showMessageDialog(Admin.this,
+                    "Демонстрационный период у " + trial + " будет сброшен. Подключайтесь через минуту");
         }
+    }
 
-        class ActListenerstat implements ActionListener {
-            public void actionPerformed(ActionEvent e) throws NullPointerException {
-                try {
-                    if (stat == null) {
-                        stat = field2.getText();
-                    }
-
-                    JOptionPane.showMessageDialog(Admin.this,
-                            "Настройки установлены " + stat);
-                } catch (Exception a) {
-                    a.printStackTrace();
-                }
-            }
+    class ChngListener implements ChangeListener {
+        public void stateChanged(ChangeEvent e) {
+            Object src = e.getSource();
         }
+    }
 
-        class ActListenercheck implements ActionListener {
-            public void actionPerformed(ActionEvent e) throws NullPointerException {
-                try {
-                    if (check == null) {
-                        check = field3.getText();
-                    }
-
-                    JOptionPane.showMessageDialog(Admin.this,
-                            "Подключаемся к " + check);
-                } catch (Exception b) {
-                    b.printStackTrace();
-                }
-            }
-        }
-
-        class ActListener41 implements ActionListener {
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    if (trial == null) {
-                        trial = field4.getText();
-                    }
-                    Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\batping.bat");
-                } catch (Exception a) {
-                    a.printStackTrace();
-                }
-                JOptionPane.showMessageDialog(Admin.this,
-                        "Демонстрационный период у " + trial + " будет сброшен. Подключайтесь через минуту");
-            }
-        }
-
-        class ChngListener implements ChangeListener {
-            public void stateChanged(ChangeEvent e) {
-                Object src = e.getSource();
-            }
-        }
-        public static void main(String[] args) throws Exception {
-            new Admin();
+    public static void main(String[] args) throws Exception {
+        new Admin();
+        while (true) {
             try (ServerSocket srv = new ServerSocket(3030)) {
                 Socket second = srv.accept();
                 System.out.println("Соединение разрешено");
@@ -296,20 +299,13 @@ public class Admin extends JFrame {
                     System.out.println("сервер считывает");
                     String entry = input.readUTF();
                     System.out.println("прочитано: " + entry);
-                    //BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\list.txt", true));
-                 // bwrtr.write(" " + entry + "\r\n");
-                  //  bwrtr.close();
-
-JOptionPane.showInputDialog(entry);
-second.close();
-                /*if (entry.equalsIgnoreCase(" name")) {
-                    out.writeUTF("something " + entry);
-                    out.flush();
                     input.close();
+                    out.flush();
                     out.close();
-                    client.close();
-                    break;
-                }*/
+
+                    JOptionPane.showInputDialog(entry);
+                    second.close();
+
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -317,3 +313,4 @@ second.close();
 
         }
     }
+}
