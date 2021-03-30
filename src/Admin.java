@@ -18,10 +18,12 @@ import javax.swing.event.ChangeListener;
 public class Admin extends JFrame {
     private static final long serialVersionUID = 1L;
     public JPanel panelRadio2, panelRadio3, panelCheck;
-    public JToggleButton butt5;
+public static JComboBox<String>box1, box2;
     public JTextField field1, field2, field3, field4;
-    public String ping, stat, check, trial, broke;
+    private  String ping, stat, check, trial, broke;
     public File pingfile;
+    private static JTextArea broketext;
+    private static String entry;
 
     public Admin() throws IOException {
         super("arm admin AGAT by PVetashkow");
@@ -60,12 +62,12 @@ public class Admin extends JFrame {
         pane4.add(lab1);
         pane4.add(field1);
 
-        JButton butt2 = new JButton("Установить   статику");
+        JButton butt2 = new JButton("Установить IP динамически");
         butt2.addActionListener(new Admin.ActListenerstat());
         butt2.addChangeListener(new Admin.ChngListener());
         butt2.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
-                System.out.println("Static");
+                System.out.println("Dynamic");
             }
         });
         pane4.add(butt2);
@@ -114,29 +116,39 @@ public class Admin extends JFrame {
         pane4.add(lab4);
         pane4.add(field4);
 
-        panelRadio3 = new JPanel(new GridLayout(0, 1, 0, 5));
-        panelRadio3.setBorder(BorderFactory.createTitledBorder("Remote Desktop"));
-        String[] names = {" Active Directory", "KSC server", "Bolid server", "1С database server"};
-        ButtonGroup butgrp2 = new ButtonGroup();
-        for (int i = 0; i < names.length; i++) {
-            JRadioButton radio = new JRadioButton(names[i]);
-            panelRadio3.add(radio);
-            butgrp2.add(radio);
-        }
-        pane4.add(panelRadio3);
 
-        panelRadio2 = new JPanel(new GridLayout(0, 1, 0, 5));
-        panelRadio2.setBorder(BorderFactory.createTitledBorder("Web-interface"));
-        String[] names2 = {" Kerio Control Center", "MFU interface", "Switch interface", "запасная кнопка"};
-        ButtonGroup butgr2 = new ButtonGroup();
-        for (int i = 0; i < names2.length; i++) {
-            JRadioButton radio = new JRadioButton(names2[i]);
-            panelRadio2.add(radio);
-            butgr2.add(radio);
-        }
-        pane4.add(panelRadio2);
+       /* String[] names = {"Active Directory", "KSC server", "Bolid server", "1С database server"};
+        JComboBox box1 = new JComboBox<String>(names);
+        pane4.add(box1);
 
-        JButton butt4 = new JButton("Remote Viewer"); //сделать выпадающее меню адреса
+        JButton butt5 = new JButton("Удал.раб.столы");
+        butt5.addActionListener(new Admin.ActListRemote());
+        butt5.addChangeListener(new Admin.ChngListener());
+        butt5.addItemListener(new ItemListener() { //...............нужен change listener
+            public void itemStateChanged(ItemEvent e) {
+            }
+        });
+        pane4.add(butt5);
+        butt5.setBorderPainted(true);
+        butt5.setFocusPainted(false);
+        butt5.setContentAreaFilled(true);
+
+        String[] names2 = {"Kerio Control Center", "MFU interface", "Switch interface", "запасная кнопка"};
+        JComboBox box2 = new JComboBox<String>(names2);
+        pane4.add(box2);
+        JButton butt6 = new JButton("WEB-Interfaces");
+        butt6.addActionListener(new Admin.ActListWeb());
+        butt6.addChangeListener(new Admin.ChngListener());
+        butt6.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+            }
+        });
+        pane4.add(butt6);
+        butt6.setBorderPainted(true);
+        butt6.setFocusPainted(false);
+        butt6.setContentAreaFilled(true);*/
+
+        JButton butt4 = new JButton("Remote Viewer");
         butt4.addActionListener(new Admin.ActListener());
         butt4.addChangeListener(new Admin.ChngListener());
         butt4.addItemListener(new ItemListener() {
@@ -148,22 +160,9 @@ public class Admin extends JFrame {
         butt4.setFocusPainted(false);
         butt4.setContentAreaFilled(true);
 
-        butt5 = new JToggleButton("Принимаем заявку?", false);
-        butt5.addActionListener(new Admin.ActListener());
-        butt5.addChangeListener(new Admin.ChngListener());
-        butt5.addItemListener(new ItemListener() { //...............нужен change listener
-            public void itemStateChanged(ItemEvent e) {
-                String text = (butt5.isSelected()) ? "Да, принимаю  " : "Нет, отказываюсь";
-                butt5.setText(text);
-                panelCheck.setVisible(butt5.isSelected());
-            }
-        });
-        pane4.add(butt5);
-        butt5.setBorderPainted(true);
-        butt5.setFocusPainted(false);
-        butt5.setContentAreaFilled(true);
 
-        JButton buttfinal = new JButton("EXECUTE!");
+
+        /*JButton buttfinal = new JButton("EXECUTE!");
         buttfinal.addActionListener(new Admin.ActListadmin());
 
         pane4.add(buttfinal);
@@ -171,7 +170,7 @@ public class Admin extends JFrame {
         buttfinal.setFocusPainted(false);
         buttfinal.setContentAreaFilled(true);
         buttfinal.setHorizontalAlignment(SwingConstants.CENTER);
-        buttfinal.setPreferredSize(new Dimension(350, 45));
+        buttfinal.setPreferredSize(new Dimension(350, 45));*/
 
         pane1.add(pane4);
 
@@ -181,10 +180,10 @@ public class Admin extends JFrame {
         contain.add(pane1, "Admin only");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
-        JTextArea broketext = new JTextArea(8, 32); // запилить в ActionListener, иначе считывает дефизы
+        broketext = new JTextArea(20, 35);
         broketext.setEditable(false);
-        broketext.setText("пока останавливаюсь на всплывающих. далее буду дорабатывать");
-        pane4.add(broketext);
+
+        pane4.add(new JScrollPane(broketext));
 
 
     }
@@ -194,39 +193,87 @@ public class Admin extends JFrame {
             JOptionPane.showMessageDialog(Admin.this,
                     "Запускаем Remote Admin");
             try {
-                Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\Radmin.exe");
+                Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Radmin.exe");
             } catch (RuntimeException | IOException c) {
                 c.printStackTrace();
             }
         }
     }
 
-    class ActListadmin implements ActionListener {
+   /* class ActListRemote implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws NullPointerException {
+            try {
+            if (box1.getSelectedItem().equals("Active Directory")){ JOptionPane.showMessageDialog(Admin.this,
+                    "Login srv Pass");}
+            else if (box1.getSelectedItem().equals("KSC server")){ JOptionPane.showMessageDialog(Admin.this,
+                    "Login srv19 Pass");}
+            else if (box1.getSelectedItem().equals("Bolid server")){ JOptionPane.showMessageDialog(Admin.this,
+                    "Login  Pass srv19INV");}
+            else if (box1.getSelectedItem().equals("1С database server")){ JOptionPane.showMessageDialog(Admin.this,
+                    "Звони 4548");}
+            }
+            catch (NullPointerException c) {
+                c.printStackTrace();
+            }
+
+               // Process proc = Runtime.getRuntime().exec("cmd /C start C:\\555.exe");
+
+        }
+    }
+
+    class ActListWeb implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws NullPointerException {
+            try{
+              //  box2=(JComboBox)e.getSource();
+
+            String web=(String)box2.getSelectedItem();
+                if (web.equals("Kerio Control Center")){ JOptionPane.showMessageDialog(Admin.this,
+                        "проработать");}
+                else if (web.equals("MFU interface")){ JOptionPane.showMessageDialog(Admin.this,
+                        "проработать");}
+                else if (web.equals("Switch interface")){ JOptionPane.showMessageDialog(Admin.this,
+                        "проработать");}
+                else if (web.equals("запасная кнопка")){ JOptionPane.showMessageDialog(Admin.this,
+                        "проработать");}
+            }
+            catch (NullPointerException c) {
+                c.printStackTrace();
+            }
+
+               // Process proc = Runtime.getRuntime().exec("cmd /C start C:\\555.exe");
+
+        }
+    }*/
+
+  /*  class ActListadmin implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             JOptionPane.showMessageDialog(Admin.this,
                     "ВЫПОЛНЕНО, сохранено."); //executing button
         }
-    }
+    }*/
 
     class ActListenerping implements ActionListener {
         public void actionPerformed(ActionEvent e) throws NullPointerException {
 
             try {
-                if (ping == null) {
-                    ping = field1.getText();
-                }
+                //if (ping == null) {
+                    ping = "ping "+field1.getText();
+                //}
 
-                BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\pingfile.bat"));// файл создает, но
-                if (pingfile.exists()) {
-                    System.out.println("File will be rewrited");// не записывает в него
-                } else {
-                    pingfile.createNewFile();
-                }
-                String str = "ping ";
-                bwrtr.write(str + ping);
-                bwrtr.close();
-                JOptionPane.showMessageDialog(Admin.this, " Пингуем хост " + ping);
+                BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\pingfile.bat", false));// файл создает, но
+                //if (pingfile.exists()) {
+                //    System.out.println("File will be rewrited");// не записывает в него
+               // } else {
+                //    pingfile.createNewFile();
+               // }
+               // String str = "ping ";
+                bwrtr.write( ping);
+
+                JOptionPane.showMessageDialog(Admin.this, " Пингуем хост " + field1.getText());
                 Process proc = Runtime.getRuntime().exec("cmd /C start D:\\pingfile.bat");
+               bwrtr.flush();
+               bwrtr.close();
+
             } catch (Exception a) {
                 a.printStackTrace();
             }
@@ -284,6 +331,8 @@ public class Admin extends JFrame {
         }
     }
 
+
+
     public static void main(String[] args) throws Exception {
         new Admin();
         while (true) {
@@ -302,14 +351,15 @@ public class Admin extends JFrame {
                     input.close();
                     out.flush();
                     out.close();
-
-                    JOptionPane.showInputDialog(entry);
                     second.close();
+                    //JOptionPane.showMessageDialog(null, entry);
+                    broketext.setText(broketext.getText()+"\r\n"+entry);
 
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
 
         }
     }
