@@ -17,8 +17,7 @@ import javax.swing.event.ChangeListener;
 
 public class Admin extends JFrame {
     private static final long serialVersionUID = 1L;
-    public JPanel panelRadio2, panelRadio3, panelCheck;
-public static JComboBox<String>box1, box2;
+    public static JComboBox<String>box1, box2;
     public JTextField field1, field2, field3, field4;
     private  String ping, stat, check, trial, broke;
     public File pingfile;
@@ -31,7 +30,6 @@ public static JComboBox<String>box1, box2;
         Container contain = getContentPane();
         contain.setLayout(new FlowLayout(FlowLayout.CENTER));
 
-        //JTabbedPane panel=new JTabbedPane(JTabbedPane.TOP);
         JPanel pane1 = new JPanel();
 
         BorderLayout border = new BorderLayout();
@@ -62,8 +60,8 @@ public static JComboBox<String>box1, box2;
         pane4.add(lab1);
         pane4.add(field1);
 
-        JButton butt2 = new JButton("Установить IP динамически");
-        butt2.addActionListener(new Admin.ActListenerstat());
+        /*JButton butt2 = new JButton("Установить IP динамически");
+        butt2.addActionListener(new Admin.ActListIp());
         butt2.addChangeListener(new Admin.ChngListener());
         butt2.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
@@ -78,10 +76,10 @@ public static JComboBox<String>box1, box2;
         field2 = new JTextField(16);
         JLabel lab2 = new JLabel("IP или имя хоста");
         pane4.add(lab2);
-        pane4.add(field2);
+        pane4.add(field2);*/
 
-        JButton butt3 = new JButton("Просмотр настроек LAN");
-        butt3.addActionListener(new Admin.ActListenercheck());
+        JButton butt3 = new JButton("Директория -Базы ESET Endpoint Antivirus-");
+        butt3.addActionListener(new Admin.ActListNod());
         butt3.addChangeListener(new Admin.ChngListener());
         butt3.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
@@ -91,7 +89,7 @@ public static JComboBox<String>box1, box2;
         pane4.add(butt3);
         butt3.setBorderPainted(true);
         butt3.setFocusPainted(false);
-        butt3.setContentAreaFilled(true);
+        butt3.setContentAreaFilled(true);/*
 
         field3 = new JTextField(16);
         JLabel lab3 = new JLabel("IP, имя MAC хоста");
@@ -99,7 +97,7 @@ public static JComboBox<String>box1, box2;
         pane4.add(field3);
 
         JButton butt41 = new JButton("Trial reset RViewer");
-        butt41.addActionListener(new Admin.ActListener41());
+        butt41.addActionListener(new Admin.ActListTrial());
         butt41.addChangeListener(new Admin.ChngListener());
         butt41.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
@@ -114,17 +112,13 @@ public static JComboBox<String>box1, box2;
         field4 = new JTextField(16);
         JLabel lab4 = new JLabel("IP, имя MAC хоста");
         pane4.add(lab4);
-        pane4.add(field4);
+        pane4.add(field4);*/
 
 
-       /* String[] names = {"Active Directory", "KSC server", "Bolid server", "1С database server"};
-        JComboBox box1 = new JComboBox<String>(names);
-        pane4.add(box1);
-
-        JButton butt5 = new JButton("Удал.раб.столы");
-        butt5.addActionListener(new Admin.ActListRemote());
+        JButton butt5 = new JButton("Active Directory");
+        butt5.addActionListener(new Admin.ActListAD());
         butt5.addChangeListener(new Admin.ChngListener());
-        butt5.addItemListener(new ItemListener() { //...............нужен change listener
+        butt5.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
             }
         });
@@ -133,11 +127,9 @@ public static JComboBox<String>box1, box2;
         butt5.setFocusPainted(false);
         butt5.setContentAreaFilled(true);
 
-        String[] names2 = {"Kerio Control Center", "MFU interface", "Switch interface", "запасная кнопка"};
-        JComboBox box2 = new JComboBox<String>(names2);
-        pane4.add(box2);
-        JButton butt6 = new JButton("WEB-Interfaces");
-        butt6.addActionListener(new Admin.ActListWeb());
+
+        JButton butt6 = new JButton("Kaspersky SecCenter");
+        butt6.addActionListener(new Admin.ActListKSC());
         butt6.addChangeListener(new Admin.ChngListener());
         butt6.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
@@ -146,9 +138,9 @@ public static JComboBox<String>box1, box2;
         pane4.add(butt6);
         butt6.setBorderPainted(true);
         butt6.setFocusPainted(false);
-        butt6.setContentAreaFilled(true);*/
+        butt6.setContentAreaFilled(true);
 
-        JButton butt4 = new JButton("Remote Viewer");
+        JButton butt4 = new JButton("Remote Administrator");
         butt4.addActionListener(new Admin.ActListener());
         butt4.addChangeListener(new Admin.ChngListener());
         butt4.addItemListener(new ItemListener() {
@@ -161,16 +153,28 @@ public static JComboBox<String>box1, box2;
         butt4.setContentAreaFilled(true);
 
 
+        JButton bolid = new JButton("Bolid Server");
+        bolid.addActionListener(new Admin.ActListBolid());
+        bolid.addChangeListener(new Admin.ChngListener());
+        bolid.addItemListener(new ItemListener() {
+            public void itemStateChanged(ItemEvent e) {
+            }
+        });
+        pane4.add(bolid);
+        bolid.setBorderPainted(true);
+        bolid.setFocusPainted(false);
+        bolid.setContentAreaFilled(true);
 
-        /*JButton buttfinal = new JButton("EXECUTE!");
-        buttfinal.addActionListener(new Admin.ActListadmin());
 
-        pane4.add(buttfinal);
-        buttfinal.setBorderPainted(true);
-        buttfinal.setFocusPainted(false);
-        buttfinal.setContentAreaFilled(true);
-        buttfinal.setHorizontalAlignment(SwingConstants.CENTER);
-        buttfinal.setPreferredSize(new Dimension(350, 45));*/
+        JButton kerio = new JButton("Kerio Control Center");
+        kerio.addActionListener(new Admin.ActListKerio());
+
+        pane4.add(kerio);
+        kerio.setBorderPainted(true);
+        kerio.setFocusPainted(false);
+        kerio.setContentAreaFilled(true);
+        kerio.setHorizontalAlignment(SwingConstants.CENTER);
+        kerio.setPreferredSize(new Dimension(450, 45));
 
         pane1.add(pane4);
 
@@ -180,7 +184,7 @@ public static JComboBox<String>box1, box2;
         contain.add(pane1, "Admin only");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
-        broketext = new JTextArea(20, 35);
+        broketext = new JTextArea(18, 35);
         broketext.setEditable(false);
 
         pane4.add(new JScrollPane(broketext));
@@ -200,73 +204,67 @@ public static JComboBox<String>box1, box2;
         }
     }
 
-   /* class ActListRemote implements ActionListener {
-        public void actionPerformed(ActionEvent e) throws NullPointerException {
+    class ActListAD implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws RuntimeException {
             try {
-            if (box1.getSelectedItem().equals("Active Directory")){ JOptionPane.showMessageDialog(Admin.this,
-                    "Login srv Pass");}
-            else if (box1.getSelectedItem().equals("KSC server")){ JOptionPane.showMessageDialog(Admin.this,
-                    "Login srv19 Pass");}
-            else if (box1.getSelectedItem().equals("Bolid server")){ JOptionPane.showMessageDialog(Admin.this,
-                    "Login  Pass srv19INV");}
-            else if (box1.getSelectedItem().equals("1С database server")){ JOptionPane.showMessageDialog(Admin.this,
-                    "Звони 4548");}
+                JOptionPane.showMessageDialog(Admin.this,
+                        "Подключаемся к удаленному рабочему столу ActiveDirectory");
+            Process proc = Runtime.getRuntime().exec("cmd /C start mstsc.exe /v server5");
             }
-            catch (NullPointerException c) {
-                c.printStackTrace();
+            catch (RuntimeException | IOException r) {
+                r.printStackTrace();
             }
-
-               // Process proc = Runtime.getRuntime().exec("cmd /C start C:\\555.exe");
-
         }
     }
 
-    class ActListWeb implements ActionListener {
+    class ActListKSC implements ActionListener {
         public void actionPerformed(ActionEvent e) throws NullPointerException {
             try{
-              //  box2=(JComboBox)e.getSource();
-
-            String web=(String)box2.getSelectedItem();
-                if (web.equals("Kerio Control Center")){ JOptionPane.showMessageDialog(Admin.this,
-                        "проработать");}
-                else if (web.equals("MFU interface")){ JOptionPane.showMessageDialog(Admin.this,
-                        "проработать");}
-                else if (web.equals("Switch interface")){ JOptionPane.showMessageDialog(Admin.this,
-                        "проработать");}
-                else if (web.equals("запасная кнопка")){ JOptionPane.showMessageDialog(Admin.this,
-                        "проработать");}
+                JOptionPane.showMessageDialog(Admin.this,
+                        "Подключаемся к удаленному рабочему столу Лаборатории Касперского");
+              Process proc = Runtime.getRuntime().exec("cmd /C start mstsc.exe /v srvksc");
             }
-            catch (NullPointerException c) {
-                c.printStackTrace();
+            catch (RuntimeException | IOException z) {
+                z.printStackTrace();
             }
-
-               // Process proc = Runtime.getRuntime().exec("cmd /C start C:\\555.exe");
-
         }
-    }*/
+    }
 
-  /*  class ActListadmin implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            JOptionPane.showMessageDialog(Admin.this,
-                    "ВЫПОЛНЕНО, сохранено."); //executing button
+    class ActListKerio implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws RuntimeException{
+
+        try{JOptionPane.showMessageDialog(Admin.this,
+                "Открываем web-interface Kerio Control Center");
+            Process proc = Runtime.getRuntime().exec("cmd /C start D:\\batkerio.bat");}
+
+        catch (RuntimeException | IOException p){
+            p.printStackTrace();}
         }
-    }*/
+    }
+
+
+    class ActListBolid implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws RuntimeException{
+
+            try{JOptionPane.showMessageDialog(Admin.this,
+                    "Подключаемся к удаленному рабочему столу системы Bolid");
+                Process proc = Runtime.getRuntime().exec("cmd /C start mstsc.exe /v srvbolid");}
+
+            catch (RuntimeException | IOException p){
+                p.printStackTrace();}
+        }
+    }
+
 
     class ActListenerping implements ActionListener {
         public void actionPerformed(ActionEvent e) throws NullPointerException {
 
             try {
-                //if (ping == null) {
-                    ping = "ping "+field1.getText();
-                //}
+                 ping = "ping "+field1.getText();
+
 
                 BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\pingfile.bat", false));// файл создает, но
-                //if (pingfile.exists()) {
-                //    System.out.println("File will be rewrited");// не записывает в него
-               // } else {
-                //    pingfile.createNewFile();
-               // }
-               // String str = "ping ";
+
                 bwrtr.write( ping);
 
                 JOptionPane.showMessageDialog(Admin.this, " Пингуем хост " + field1.getText());
@@ -274,13 +272,13 @@ public static JComboBox<String>box1, box2;
                bwrtr.flush();
                bwrtr.close();
 
-            } catch (Exception a) {
+            } catch (NullPointerException | IOException a) {
                 a.printStackTrace();
             }
         }
     }
 
-    class ActListenerstat implements ActionListener {
+    /*class ActListIp implements ActionListener {
         public void actionPerformed(ActionEvent e) throws NullPointerException {
             try {
                 if (stat == null) {
@@ -293,24 +291,23 @@ public static JComboBox<String>box1, box2;
                 a.printStackTrace();
             }
         }
-    }
+    }*/
 
-    class ActListenercheck implements ActionListener {
+   class ActListNod implements ActionListener {
         public void actionPerformed(ActionEvent e) throws NullPointerException {
             try {
-                if (check == null) {
-                    check = field3.getText();
-                }
+                Process proc = Runtime.getRuntime().exec("cmd /C start D:nod.bat");
+
 
                 JOptionPane.showMessageDialog(Admin.this,
-                        "Подключаемся к " + check);
+                        "Открываю папку баз NOD ");
             } catch (Exception b) {
                 b.printStackTrace();
             }
         }
     }
 
-    class ActListener41 implements ActionListener {
+    /*class ActListTrial implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             try {
                 if (trial == null) {
@@ -323,15 +320,13 @@ public static JComboBox<String>box1, box2;
             JOptionPane.showMessageDialog(Admin.this,
                     "Демонстрационный период у " + trial + " будет сброшен. Подключайтесь через минуту");
         }
-    }
+    }*/
 
     class ChngListener implements ChangeListener {
         public void stateChanged(ChangeEvent e) {
             Object src = e.getSource();
         }
     }
-
-
 
     public static void main(String[] args) throws Exception {
         new Admin();
@@ -352,15 +347,13 @@ public static JComboBox<String>box1, box2;
                     out.flush();
                     out.close();
                     second.close();
-                    //JOptionPane.showMessageDialog(null, entry);
-                    broketext.setText(broketext.getText()+"\r\n"+entry);
 
+                    broketext.setText(broketext.getText()+"\r\n"+entry);
+                    JOptionPane.showMessageDialog(null, entry);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
-
         }
     }
 }
