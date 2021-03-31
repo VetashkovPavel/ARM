@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.net.UnknownHostException;
 
 public class Server {
-   // Socket second;
+
     public static void main(String[] args) throws IOException {
 
         try (ServerSocket server = new ServerSocket(3345)) {
@@ -29,9 +29,7 @@ public class Server {
             out.flush();
             out.close();
 
-                     //проба ретрансляции заявки
-
-                    Socket second = new Socket("localhost", 3030);
+                    Socket second = new Socket("oit17", 3030);
                     DataOutputStream dos = new DataOutputStream(second.getOutputStream());
 
                     while (!second.isOutputShutdown()) {

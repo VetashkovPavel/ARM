@@ -347,9 +347,8 @@ public class Admin extends JFrame {
                     out.flush();
                     out.close();
                     second.close();
-
                     broketext.setText(broketext.getText()+"\r\n"+entry);
-                    JOptionPane.showMessageDialog(null, entry);
+                    //JOptionPane.showMessageDialog(null, entry);
                 }
             } catch (IOException e) {
                 e.printStackTrace();

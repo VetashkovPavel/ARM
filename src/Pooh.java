@@ -1,9 +1,6 @@
-//import javafx.scene.input.InputMethodTextRun;
-
 import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
@@ -121,7 +118,7 @@ public class Pooh extends JFrame {
             phone = field3p.getText();
             broke = butgrp.getSelection().getActionCommand();
             try {
-                socket = new Socket("localhost", 3345);
+                socket = new Socket("oit1", 3345);
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
                 DataInputStream dis = new DataInputStream(socket.getInputStream());
