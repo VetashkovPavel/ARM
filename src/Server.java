@@ -44,10 +44,10 @@ public class Server {
                     }
                     second.close();
 
-                Socket first = new Socket("oit1", 3030);
-                DataOutputStream dos1 = new DataOutputStream(second.getOutputStream());
+                /*Socket first = new Socket("PavelBook", 3030);
+                DataOutputStream dos1 = new DataOutputStream(first.getOutputStream());
 
-                while (!second.isOutputShutdown()) {
+                while (!first.isOutputShutdown()) {
 
                     System.out.println("started");
                     String text = entry;
@@ -57,7 +57,7 @@ public class Server {
                     System.out.println("передано _ " + text);
                     break;
                 }
-                first.close();
+                first.close();*/
                 }
     }
         catch(

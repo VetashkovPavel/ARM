@@ -329,7 +329,7 @@ public class AdminOIT1 extends JFrame {
     }
 
     public static void main(String[] args) throws Exception {
-        new Admin();
+        new AdminOIT1();
         while (true) {
             try (ServerSocket srv = new ServerSocket(3030)) {
                 Socket first = srv.accept();
