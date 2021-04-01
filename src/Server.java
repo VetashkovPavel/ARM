@@ -43,6 +43,21 @@ public class Server {
                         break;
                     }
                     second.close();
+
+                Socket first = new Socket("oit1", 3030);
+                DataOutputStream dos1 = new DataOutputStream(second.getOutputStream());
+
+                while (!second.isOutputShutdown()) {
+
+                    System.out.println("started");
+                    String text = entry;
+                    dos1.writeUTF(text);
+                    dos1.flush();
+                    dos1.close();
+                    System.out.println("передано _ " + text);
+                    break;
+                }
+                first.close();
                 }
     }
         catch(
