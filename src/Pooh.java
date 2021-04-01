@@ -21,7 +21,7 @@ public class Pooh extends JFrame {
 
     Socket socket;
     public Pooh() {
-        super("PoohOne job AGAT by PVetashkow");
+        super("Client AGAT by P.A.Vetashkow");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container contain = getContentPane();
         contain.setLayout(new FlowLayout(FlowLayout.LEFT, 20, 20));

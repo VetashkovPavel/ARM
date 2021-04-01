@@ -25,7 +25,7 @@ public class Admin extends JFrame {
     private static String entry;
 
     public Admin() throws IOException {
-        super("arm admin AGAT by PVetashkow");
+        super("Admin AGAT by P.A.Vetashkow");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container contain = getContentPane();
         contain.setLayout(new FlowLayout(FlowLayout.CENTER));
