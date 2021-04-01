@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ARM2Mir:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ARM_jar2Mir</output-path>
+    <root id="archive" name="ARM.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/Client/2старый сервер/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="ARM" />
+    </root>
+  </artifact>
+</component>
