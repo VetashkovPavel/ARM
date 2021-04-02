@@ -1,3 +1,5 @@
+import jdk.nashorn.internal.objects.Global;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -6,9 +8,11 @@ import java.net.Socket;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.net.UnknownHostException;
+import java.util.Date;
 
 public class Server {
 
+//public static Long current;
     public static void main(String[] args) throws IOException {
 
         try (ServerSocket server = new ServerSocket(3345)) {
@@ -22,8 +26,9 @@ public class Server {
             System.out.println("сервер считывает");
             String entry = input.readUTF();
             System.out.println("прочитано: " + entry);
+            Date date=new Date();
             BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\list.txt", true));
-            bwrtr.write(" " + entry + "\r\n");
+            bwrtr.write(date.toString()+" " + entry + "\r\n");
             bwrtr.close();
             client.close();
             out.flush();
@@ -33,10 +38,10 @@ public class Server {
             DataOutputStream dos = new DataOutputStream(second.getOutputStream());
             Socket first = new Socket("PavelBook", 3030);
             DataOutputStream dos1 = new DataOutputStream(first.getOutputStream());
-            Socket third = new Socket("oit13", 3030);
-            DataOutputStream dos2 = new DataOutputStream(third.getOutputStream());
+            //Socket third = new Socket("oit13", 3030);
+            //DataOutputStream dos2 = new DataOutputStream(third.getOutputStream());
 
-                    if (!second.isOutputShutdown()) {
+                    while (!second.isOutputShutdown()) {
 
                         System.out.println("started");
                         String text = entry;
@@ -48,7 +53,7 @@ public class Server {
                     }
                     second.close();
 
-                 if (!first.isOutputShutdown()) {
+                 while (!first.isOutputShutdown()) {
 
                     System.out.println("started");
                     String text = entry;
@@ -60,7 +65,7 @@ public class Server {
                 }
                 first.close();
 
-                if (!third.isOutputShutdown()) {
+                /*if (!third.isOutputShutdown()) {
 
                     System.out.println("started");
                     String text = entry;
@@ -70,7 +75,7 @@ public class Server {
                     System.out.println("передано _ " + text);
                     break;
                 }
-                third.close();
+                third.close();*/
                 }
     }
         catch(
