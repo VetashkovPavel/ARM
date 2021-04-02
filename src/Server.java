@@ -29,10 +29,14 @@ public class Server {
             out.flush();
             out.close();
 
-                    Socket second = new Socket("oit17", 3030);
-                    DataOutputStream dos = new DataOutputStream(second.getOutputStream());
+            Socket second = new Socket("oit17", 3030);
+            DataOutputStream dos = new DataOutputStream(second.getOutputStream());
+            Socket first = new Socket("PavelBook", 3030);
+            DataOutputStream dos1 = new DataOutputStream(first.getOutputStream());
+            Socket third = new Socket("oit13", 3030);
+            DataOutputStream dos2 = new DataOutputStream(third.getOutputStream());
 
-                    while (!second.isOutputShutdown()) {
+                    if (!second.isOutputShutdown()) {
 
                         System.out.println("started");
                         String text = entry;
@@ -44,10 +48,7 @@ public class Server {
                     }
                     second.close();
 
-                /*Socket first = new Socket("PavelBook", 3030);
-                DataOutputStream dos1 = new DataOutputStream(first.getOutputStream());
-
-                while (!first.isOutputShutdown()) {
+                 if (!first.isOutputShutdown()) {
 
                     System.out.println("started");
                     String text = entry;
@@ -57,7 +58,19 @@ public class Server {
                     System.out.println("передано _ " + text);
                     break;
                 }
-                first.close();*/
+                first.close();
+
+                if (!third.isOutputShutdown()) {
+
+                    System.out.println("started");
+                    String text = entry;
+                    dos2.writeUTF(text);
+                    dos2.flush();
+                    dos2.close();
+                    System.out.println("передано _ " + text);
+                    break;
+                }
+                third.close();
                 }
     }
         catch(

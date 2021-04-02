@@ -114,7 +114,7 @@ public class Pooh extends JFrame {
 
         getContentPane().setLayout(new GridLayout());
         contain.add(pane2, BorderLayout.CENTER);
-        setSize(510, 550);
+        setSize(500, 480);
         setVisible(true);
 
 
