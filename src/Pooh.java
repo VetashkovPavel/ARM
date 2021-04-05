@@ -135,7 +135,7 @@ public class Pooh extends JFrame {
             other = field4p.getText();
             broke = butgrp.getSelection().getActionCommand();
             try {
-                socket = new Socket("PavelBook", 3345);//перевести на постоянный сервер
+                socket = new Socket("PavelBook", 3345);                 //перевести на постоянный сервер
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
                 DataInputStream dis = new DataInputStream(socket.getInputStream());
