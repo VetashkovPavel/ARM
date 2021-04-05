@@ -35,54 +35,58 @@ public class Server {
                 out.flush();
                 out.close();
 
-                Socket second = new Socket("oit17", 3030);
-                DataOutputStream dos = new DataOutputStream(second.getOutputStream());
-                Socket first = new Socket("PavelBook", 3030);
-                DataOutputStream dos1 = new DataOutputStream(first.getOutputStream());
-                Socket third = new Socket("oit13", 3030);
-                DataOutputStream dos2 = new DataOutputStream(third.getOutputStream());
+                try (Socket first = new Socket("PavelBook", 3030);
+                DataOutputStream dos1 = new DataOutputStream(first.getOutputStream())){
 
-                if (second.isConnected() || !second.isClosed()) {
-                    System.out.println("started");
-                    text = entry;
-                    dos.writeUTF(text);
-                    dos.flush();
-                    dos.close();
-                    System.out.println("передано _ " + text);
-                    // break;
-                    second.close();
-                }
-                else{
-                    System.out.println("turned off");
-                    continue;
-                }
-
-                if (first.isConnected()|| !first.isClosed()) {
+                if (first.isConnected()| !first.isClosed()) {
                     System.out.println("started");
                     //text = entry;
                     dos1.writeUTF(text);
                     dos1.flush();
                     dos1.close();
                     System.out.println("передано _ " + text);
-                    //break;
                     first.close();
                 }
                 else
                 {
                     continue;
-                }
+                }}
+                catch (Exception q){
+                    q.printStackTrace();}
 
-                if (third.isConnected()|| !third.isClosed()) {
+                try (Socket second = new Socket("oit17", 3030);
+                DataOutputStream dos = new DataOutputStream(second.getOutputStream())){
+
+                if (second.isConnected()| !second.isClosed() ) {
+                    System.out.println("started");
+                    text = entry;
+                    dos.writeUTF(text);
+                    dos.flush();
+                    dos.close();
+                    System.out.println("передано _ " + text);
+                    second.close();
+                }
+                else{
+                    System.out.println("turned off");
+                    continue;
+                }}
+                catch (Exception w){w.printStackTrace();}
+
+                try (Socket third = new Socket("oit13", 3030);
+                DataOutputStream dos2 = new DataOutputStream(third.getOutputStream())){
+
+                if (third.isConnected()| !third.isClosed()) {
                     System.out.println("started");
                     //String text = entry;
                     dos2.writeUTF(text);
                     dos2.flush();
                     dos2.close();
                     System.out.println("передано _ " + text);
-                    //break;
                     third.close();
                 }
 
+            }
+            catch (Exception r){r.printStackTrace();}
             }
 
         } catch (
