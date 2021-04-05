@@ -15,7 +15,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class AdminOA20 extends JFrame {
+public class AdminOA2 extends JFrame {
     private static final long serialVersionUID = 1L;
     public static JComboBox<String>box1, box2;
     public JTextField field1, field2, field3, field4;
@@ -24,8 +24,8 @@ public class AdminOA20 extends JFrame {
     private static JTextArea broketext;
     private static String entry;
 
-    public AdminOA20() throws IOException {
-        super("Admin AGAT by P.A.Vetashkow");
+    public AdminOA2() throws IOException {
+        super("Admin AGAT ");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container contain = getContentPane();
         contain.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -44,8 +44,8 @@ public class AdminOA20 extends JFrame {
         JPanel pane4 = new JPanel();
 
         JButton butt1 = new JButton("Ping host");
-        butt1.addActionListener(new AdminOA20.ActListenerping());
-        butt1.addChangeListener(new AdminOA20.ChngListener());
+        butt1.addActionListener(new AdminOA2.ActListenerping());
+        butt1.addChangeListener(new AdminOA2.ChngListener());
         butt1.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
             }
@@ -79,8 +79,8 @@ public class AdminOA20 extends JFrame {
         pane4.add(field2);*/
 
         JButton butt3 = new JButton("Директория -Базы ESET Endpoint Antivirus-");
-        butt3.addActionListener(new AdminOA20.ActListNod());
-        butt3.addChangeListener(new AdminOA20.ChngListener());
+        butt3.addActionListener(new AdminOA2.ActListNod());
+        butt3.addChangeListener(new AdminOA2.ChngListener());
         butt3.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
                 System.out.println("default lan");
@@ -116,8 +116,8 @@ public class AdminOA20 extends JFrame {
 
 
         JButton butt5 = new JButton("Active Directory");
-        butt5.addActionListener(new AdminOA20.ActListAD());
-        butt5.addChangeListener(new AdminOA20.ChngListener());
+        butt5.addActionListener(new AdminOA2.ActListAD());
+        butt5.addChangeListener(new AdminOA2.ChngListener());
         butt5.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
             }
@@ -129,8 +129,8 @@ public class AdminOA20 extends JFrame {
 
 
         JButton butt6 = new JButton("Kaspersky SecCenter");
-        butt6.addActionListener(new AdminOA20.ActListKSC());
-        butt6.addChangeListener(new AdminOA20.ChngListener());
+        butt6.addActionListener(new AdminOA2.ActListKSC());
+        butt6.addChangeListener(new AdminOA2.ChngListener());
         butt6.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
             }
@@ -141,8 +141,8 @@ public class AdminOA20 extends JFrame {
         butt6.setContentAreaFilled(true);
 
         JButton butt4 = new JButton("Remote Administrator");
-        butt4.addActionListener(new AdminOA20.ActListener());
-        butt4.addChangeListener(new AdminOA20.ChngListener());
+        butt4.addActionListener(new AdminOA2.ActListener());
+        butt4.addChangeListener(new AdminOA2.ChngListener());
         butt4.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
             }
@@ -154,8 +154,8 @@ public class AdminOA20 extends JFrame {
 
 
         JButton bolid = new JButton("Bolid Server");
-        bolid.addActionListener(new AdminOA20.ActListBolid());
-        bolid.addChangeListener(new AdminOA20.ChngListener());
+        bolid.addActionListener(new AdminOA2.ActListBolid());
+        bolid.addChangeListener(new AdminOA2.ChngListener());
         bolid.addItemListener(new ItemListener() {
             public void itemStateChanged(ItemEvent e) {
             }
@@ -167,7 +167,7 @@ public class AdminOA20 extends JFrame {
 
 
         JButton kerio = new JButton("Kerio Control Center");
-        kerio.addActionListener(new AdminOA20.ActListKerio());
+        kerio.addActionListener(new AdminOA2.ActListKerio());
 
         pane4.add(kerio);
         kerio.setBorderPainted(true);
@@ -194,7 +194,7 @@ public class AdminOA20 extends JFrame {
 
     class ActListener implements ActionListener {
         public void actionPerformed(ActionEvent e) throws RuntimeException {
-            JOptionPane.showMessageDialog(AdminOA20.this,
+            JOptionPane.showMessageDialog(AdminOA2.this,
                     "Запускаем Remote Admin");
             try {
                 Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Radmin.exe");
@@ -207,7 +207,7 @@ public class AdminOA20 extends JFrame {
     class ActListAD implements ActionListener {
         public void actionPerformed(ActionEvent e) throws RuntimeException {
             try {
-                JOptionPane.showMessageDialog(AdminOA20.this,
+                JOptionPane.showMessageDialog(AdminOA2.this,
                         "Подключаемся к удаленному рабочему столу ActiveDirectory");
                 Process proc = Runtime.getRuntime().exec("cmd /C start mstsc.exe /v server5");
             }
@@ -220,7 +220,7 @@ public class AdminOA20 extends JFrame {
     class ActListKSC implements ActionListener {
         public void actionPerformed(ActionEvent e) throws NullPointerException {
             try{
-                JOptionPane.showMessageDialog(AdminOA20.this,
+                JOptionPane.showMessageDialog(AdminOA2.this,
                         "Подключаемся к удаленному рабочему столу Лаборатории Касперского");
                 Process proc = Runtime.getRuntime().exec("cmd /C start mstsc.exe /v srvksc");
             }
@@ -233,7 +233,7 @@ public class AdminOA20 extends JFrame {
     class ActListKerio implements ActionListener {
         public void actionPerformed(ActionEvent e) throws RuntimeException{
 
-            try{JOptionPane.showMessageDialog(AdminOA20.this,
+            try{JOptionPane.showMessageDialog(AdminOA2.this,
                     "Открываем web-interface Kerio Control Center");
                 Process proc = Runtime.getRuntime().exec("cmd /C start D:\\batkerio.bat");}
 
@@ -246,7 +246,7 @@ public class AdminOA20 extends JFrame {
     class ActListBolid implements ActionListener {
         public void actionPerformed(ActionEvent e) throws RuntimeException{
 
-            try{JOptionPane.showMessageDialog(AdminOA20.this,
+            try{JOptionPane.showMessageDialog(AdminOA2.this,
                     "Подключаемся к удаленному рабочему столу системы Bolid");
                 Process proc = Runtime.getRuntime().exec("cmd /C start mstsc.exe /v srvbolid");}
 
@@ -267,7 +267,7 @@ public class AdminOA20 extends JFrame {
 
                 bwrtr.write( ping);
 
-                JOptionPane.showMessageDialog(AdminOA20.this, " Пингуем хост " + field1.getText());
+                JOptionPane.showMessageDialog(AdminOA2.this, " Пингуем хост " + field1.getText());
                 Process proc = Runtime.getRuntime().exec("cmd /C start D:\\pingfile.bat");
                 bwrtr.flush();
                 bwrtr.close();
@@ -299,7 +299,7 @@ public class AdminOA20 extends JFrame {
                 Process proc = Runtime.getRuntime().exec("cmd /C start D:nod.bat");
 
 
-                JOptionPane.showMessageDialog(AdminOA20.this,
+                JOptionPane.showMessageDialog(AdminOA2.this,
                         "Открываю папку баз NOD ");
             } catch (Exception b) {
                 b.printStackTrace();
@@ -329,14 +329,14 @@ public class AdminOA20 extends JFrame {
     }
 
     public static void main(String[] args) throws Exception {
-        new AdminOA20();
+        new AdminOA2();
         while (true) {
             try (ServerSocket srv = new ServerSocket(3030)) {
-                Socket fourth = srv.accept();
+                Socket fifth = srv.accept();
                 System.out.println("Соединение разрешено");
-                DataOutputStream out = new DataOutputStream(fourth.getOutputStream());
+                DataOutputStream out = new DataOutputStream(fifth.getOutputStream());
                 System.out.println("Поток записи создан");
-                DataInputStream input = new DataInputStream(fourth.getInputStream());
+                DataInputStream input = new DataInputStream(fifth.getInputStream());
                 System.out.println("поток чтения создан");
 
                 while (true) {
@@ -346,7 +346,7 @@ public class AdminOA20 extends JFrame {
                     input.close();
                     out.flush();
                     out.close();
-                    fourth.close();
+                    fifth.close();
                     broketext.setText(broketext.getText()+"\r\n"+entry);
                     //JOptionPane.showMessageDialog(null, entry);
                 }

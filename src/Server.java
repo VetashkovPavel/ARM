@@ -35,7 +35,7 @@ public class Server {
                 out.flush();
                 out.close();
 
-                try (Socket first = new Socket("PavelBook", 3030);
+                try (Socket first = new Socket("OIT1", 3030);
                 DataOutputStream dos1 = new DataOutputStream(first.getOutputStream())){
 
                 if (first.isConnected()| !first.isClosed()) {
@@ -84,9 +84,85 @@ public class Server {
                     System.out.println("передано _ " + text);
                     third.close();
                 }
+                else {
+                    continue;}
 
             }
             catch (Exception r){r.printStackTrace();}
+
+
+            try (Socket fourth = new Socket("OASUP20", 3030);
+                 DataOutputStream dos = new DataOutputStream(fourth.getOutputStream())){
+
+                if (fourth.isConnected()| !fourth.isClosed() ) {
+                    System.out.println("started");
+                    text = entry;
+                    dos.writeUTF(text);
+                    dos.flush();
+                    dos.close();
+                    System.out.println("передано _ " + text);
+                    fourth.close();
+                }
+                else{
+                    System.out.println("turned off");
+                    continue;
+                }}
+            catch (Exception w){w.printStackTrace();}
+
+                try (Socket fifth = new Socket("OASUP2", 3030);
+                     DataOutputStream dos = new DataOutputStream(fifth.getOutputStream())){
+
+                    if (fifth.isConnected()| !fifth.isClosed() ) {
+                        System.out.println("started");
+                        text = entry;
+                        dos.writeUTF(text);
+                        dos.flush();
+                        dos.close();
+                        System.out.println("передано _ " + text);
+                        fifth.close();
+                    }
+                    else{
+                        System.out.println("turned off");
+                        continue;
+                    }}
+                catch (Exception w){w.printStackTrace();}
+
+                try (Socket sixs = new Socket("ADMIN", 3030);
+                     DataOutputStream dos = new DataOutputStream(sixs.getOutputStream())){
+
+                    if (sixs.isConnected()| !sixs.isClosed() ) {
+                        System.out.println("started");
+                        text = entry;
+                        dos.writeUTF(text);
+                        dos.flush();
+                        dos.close();
+                        System.out.println("передано _ " + text);
+                        sixs.close();
+                    }
+                    else{
+                        System.out.println("turned off");
+                        continue;
+                    }}
+                catch (Exception w){w.printStackTrace();}
+
+                try (Socket seventh = new Socket("oit9", 3030);
+                     DataOutputStream dos = new DataOutputStream(seventh.getOutputStream())){
+
+                    if (seventh.isConnected()| !seventh.isClosed() ) {
+                        System.out.println("started");
+                        text = entry;
+                        dos.writeUTF(text);
+                        dos.flush();
+                        dos.close();
+                        System.out.println("передано _ " + text);
+                        seventh.close();
+                    }
+                    else{
+                        System.out.println("turned off");
+                        continue;
+                    }}
+                catch (Exception w){w.printStackTrace();}
+
             }
 
         } catch (
