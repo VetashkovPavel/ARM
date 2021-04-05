@@ -31,6 +31,7 @@ public class Server {
                 BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\list.txt", true));
                 bwrtr.write(date.toString() + " " + entry + "\r\n");
                 bwrtr.close();
+                text=entry;
                 client.close();
                 out.flush();
                 out.close();
@@ -40,7 +41,6 @@ public class Server {
 
                 if (first.isConnected()| !first.isClosed()) {
                     System.out.println("started");
-                    //text = entry;
                     dos1.writeUTF(text);
                     dos1.flush();
                     dos1.close();
@@ -59,7 +59,6 @@ public class Server {
 
                 if (second.isConnected()| !second.isClosed() ) {
                     System.out.println("started");
-                    text = entry;
                     dos.writeUTF(text);
                     dos.flush();
                     dos.close();
@@ -67,7 +66,6 @@ public class Server {
                     second.close();
                 }
                 else{
-                    System.out.println("turned off");
                     continue;
                 }}
                 catch (Exception w){w.printStackTrace();}
@@ -77,7 +75,6 @@ public class Server {
 
                 if (third.isConnected()| !third.isClosed()) {
                     System.out.println("started");
-                    //String text = entry;
                     dos2.writeUTF(text);
                     dos2.flush();
                     dos2.close();
@@ -85,8 +82,8 @@ public class Server {
                     third.close();
                 }
                 else {
-                    continue;}
-
+                    continue;
+                }
             }
             catch (Exception r){r.printStackTrace();}
 
@@ -104,7 +101,6 @@ public class Server {
                     fourth.close();
                 }
                 else{
-                    System.out.println("turned off");
                     continue;
                 }}
             catch (Exception w){w.printStackTrace();}
@@ -114,7 +110,6 @@ public class Server {
 
                     if (fifth.isConnected()| !fifth.isClosed() ) {
                         System.out.println("started");
-                        text = entry;
                         dos.writeUTF(text);
                         dos.flush();
                         dos.close();
@@ -122,7 +117,6 @@ public class Server {
                         fifth.close();
                     }
                     else{
-                        System.out.println("turned off");
                         continue;
                     }}
                 catch (Exception w){w.printStackTrace();}
@@ -132,7 +126,6 @@ public class Server {
 
                     if (sixs.isConnected()| !sixs.isClosed() ) {
                         System.out.println("started");
-                        text = entry;
                         dos.writeUTF(text);
                         dos.flush();
                         dos.close();
@@ -140,7 +133,6 @@ public class Server {
                         sixs.close();
                     }
                     else{
-                        System.out.println("turned off");
                         continue;
                     }}
                 catch (Exception w){w.printStackTrace();}
@@ -150,7 +142,6 @@ public class Server {
 
                     if (seventh.isConnected()| !seventh.isClosed() ) {
                         System.out.println("started");
-                        text = entry;
                         dos.writeUTF(text);
                         dos.flush();
                         dos.close();
@@ -158,7 +149,6 @@ public class Server {
                         seventh.close();
                     }
                     else{
-                        System.out.println("turned off");
                         continue;
                     }}
                 catch (Exception w){w.printStackTrace();}
