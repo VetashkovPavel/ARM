@@ -42,7 +42,7 @@ public class Server {
                 Socket third = new Socket("oit13", 3030);
                 DataOutputStream dos2 = new DataOutputStream(third.getOutputStream());
 
-                while (!second.isOutputShutdown()) {
+                if (second.isConnected() || !second.isClosed()) {
                     System.out.println("started");
                     text = entry;
                     dos.writeUTF(text);
@@ -52,8 +52,12 @@ public class Server {
                     // break;
                     second.close();
                 }
+                else{
+                    System.out.println("turned off");
+                    continue;
+                }
 
-                while (!first.isOutputShutdown()) {
+                if (first.isConnected()|| !first.isClosed()) {
                     System.out.println("started");
                     //text = entry;
                     dos1.writeUTF(text);
@@ -63,8 +67,12 @@ public class Server {
                     //break;
                     first.close();
                 }
+                else
+                {
+                    continue;
+                }
 
-                while (!third.isOutputShutdown()) {
+                if (third.isConnected()|| !third.isClosed()) {
                     System.out.println("started");
                     //String text = entry;
                     dos2.writeUTF(text);
