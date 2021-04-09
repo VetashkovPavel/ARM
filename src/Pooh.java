@@ -103,28 +103,44 @@ public class Pooh extends JFrame {
         butt1p.setHorizontalAlignment(SwingConstants.CENTER);
         butt1p.setVerticalAlignment(SwingConstants.CENTER);
 
+        JButton butt2p = new JButton("Показать телефоны ОИТ");
+        butt2p.addActionListener(new ActListenertlf());
+        pane2.add(butt2p);
+
+
+
+        pane2.add(butt2p);
+        butt2p.setPreferredSize(new Dimension(320, 25));
+        butt2p.setBorderPainted(true);
+        butt2p.setFocusPainted(false);
+        butt2p.setContentAreaFilled(true);
+        butt2p.setHorizontalAlignment(SwingConstants.CENTER);
+        butt2p.setVerticalAlignment(SwingConstants.CENTER);
+
         JLabel lab5p = new JLabel("ОБРАТИТЕ ВНИМАНИЕ: в связи со стихийной");
         JLabel lab6p = new JLabel("загрузкой отдела (резкий всплеск возникших неисправностей), ");
         JLabel lab7p = new JLabel("Ваши заявки могут быть обработаны спустя некоторое время.");
-        JLabel lab8p = new JLabel("Всплывающее окошко является подтверждением отправки заявки.");
+        JLabel lab8p = new JLabel("Всплывающее окошко является подтверждением отправки заявки и");
+        JLabel lab9p = new JLabel("дополнительной проверкой правильности указанной в ней информации");
         pane2.add(lab5p);
         pane2.add(lab6p);
         pane2.add(lab7p);
         pane2.add(lab8p);
+        pane2.add(lab9p);
 
         getContentPane().setLayout(new GridLayout());
         contain.add(pane2, BorderLayout.CENTER);
-        setSize(500, 480);
+        setSize(510, 535);
         setVisible(true);
 
 
-        JOptionPane.showMessageDialog(Pooh.this,
+        /*JOptionPane.showMessageDialog(Pooh.this,
                 new String[]{"Телефоны Отдела Информационных Технологий:",
                         "4861 - Леонид, Алексей, Павел;",
                         "4548 - Алексей (1С:Предприятие);",
                         "4933 - Елена (1С:Предприятие, ЕСЭВМ);",
                         "4945 - Александр Антонович, Андрей - связь;",
-                        "4457 - Владимир Борисович, руководитель подразделения."});
+                        "4457 - Владимир Борисович, руководитель подразделения."});*/
     }
 
     class ActListener implements ActionListener {
@@ -162,7 +178,23 @@ public class Pooh extends JFrame {
                 a.printStackTrace();
             }
             JOptionPane.showMessageDialog(Pooh.this,
-                    "Заявка отправлена ("+broke +", "+ surname + ", отдел: " + place + ", тлф " + phone +". "+other+")");
+                    new String[]{"Заявка отправлена, проверьте, пожалуйста, всё ли верно указано: ",
+                            ""+broke +", пользователь "+ surname + ", отдел: " + place + ", тлф " + phone +". "+other+" ",
+                            " Благодарим за обращение в ОИТ!"});
+
+        }
+    }
+
+    class ActListenertlf implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws RuntimeException {
+            JOptionPane.showMessageDialog(Pooh.this,
+                    new String[]{"Телефоны Отдела Информационных Технологий:",
+                            "4861 - Леонид, Алексей, Павел;",
+                            "4548 - Алексей (1С:Предприятие);",
+                            "4933 - Елена (1С:Предприятие, ЕСЭВМ);",
+                            "4945 - Александр Антонович, Андрей - связь;",
+                            "4457 - Владимир Борисович, руководитель подразделения."});
+
 
         }
     }

@@ -176,6 +176,17 @@ public class AdminOIT1 extends JFrame {
         kerio.setHorizontalAlignment(SwingConstants.CENTER);
         kerio.setPreferredSize(new Dimension(450, 45));
 
+        JButton buttlist = new JButton("Весь список заявок");
+        buttlist.addActionListener(new AdminOIT1.ActListenerList());
+
+        pane4.add(buttlist);
+        buttlist.setPreferredSize(new Dimension(350, 35));
+        buttlist.setBorderPainted(true);
+        buttlist.setFocusPainted(false);
+        buttlist.setContentAreaFilled(true);
+        buttlist.setHorizontalAlignment(SwingConstants.CENTER);
+        buttlist.setVerticalAlignment(SwingConstants.CENTER);
+
         pane1.add(pane4);
 
         setSize(510, 550);
@@ -184,12 +195,24 @@ public class AdminOIT1 extends JFrame {
         contain.add(pane1, "Admin only");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
-        broketext = new JTextArea(18, 42);
+        broketext = new JTextArea(20, 42);
         broketext.setEditable(false);
 
         pane4.add(new JScrollPane(broketext));
 
 
+    }
+
+    class ActListenerList implements ActionListener {
+        public void actionPerformed(ActionEvent e) throws RuntimeException {
+            JOptionPane.showMessageDialog(AdminOIT1.this,
+                    "Открываем");
+            try {
+                Process proc = Runtime.getRuntime().exec("cmd start explorer.exe \\192.168.3.168\\D:\\тестовая\\ARMclient.java");
+            } catch (RuntimeException | IOException c) {
+                c.printStackTrace();
+            }
+        }
     }
 
     class ActListener implements ActionListener {

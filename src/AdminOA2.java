@@ -184,7 +184,7 @@ public class AdminOA2 extends JFrame {
         contain.add(pane1, "Admin only");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
-        broketext = new JTextArea(18, 42);
+        broketext = new JTextArea(20, 42);
         broketext.setEditable(false);
 
         pane4.add(new JScrollPane(broketext));
