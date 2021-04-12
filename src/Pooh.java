@@ -88,7 +88,7 @@ public class Pooh extends JFrame {
         pane2.add(field3p);
 
         field4p = new JTextField(35);
-        JLabel lab4p = new JLabel("Примечание/комментарий/степень срочности:");
+        JLabel lab4p = new JLabel("Примечание / комментарий / степень срочности:");
         pane2.add(lab4p);
         pane2.add(field4p);
 
