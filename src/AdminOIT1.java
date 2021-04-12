@@ -189,7 +189,7 @@ public class AdminOIT1 extends JFrame {
 
         pane1.add(pane4);
 
-        setSize(510, 550);
+        setSize(510, 580);
         setVisible(true);
 
         contain.add(pane1, "Admin only");
@@ -208,7 +208,7 @@ public class AdminOIT1 extends JFrame {
             JOptionPane.showMessageDialog(AdminOIT1.this,
                     "Открываем");
             try {
-                Process proc = Runtime.getRuntime().exec("cmd start explorer.exe \\192.168.3.168\\D:\\тестовая\\ARMclient.java");
+                Process proc = Runtime.getRuntime().exec("cmd start explorer.exe \\192.168.3.168\\");
             } catch (RuntimeException | IOException c) {
                 c.printStackTrace();
             }

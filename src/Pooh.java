@@ -29,7 +29,7 @@ public class Pooh extends JFrame {
         JPanel pane2 = new JPanel();
 
         field1p = new JTextField(25);
-        JLabel lab1p = new JLabel("Ваша Фамилия");
+        JLabel lab1p = new JLabel("Ваша Фамилия:");
         pane2.add(lab1p);
         pane2.add(field1p);
 
@@ -78,17 +78,17 @@ public class Pooh extends JFrame {
         pane2.add(panelRadio);
 
         field2p = new JTextField(30);
-        JLabel lab2p = new JLabel("Ваше расположение");
+        JLabel lab2p = new JLabel("Ваше расположение:");
         pane2.add(lab2p);
         pane2.add(field2p);
 
         field3p = new JTextField(10);
-        JLabel lab3p = new JLabel("Контактный телефон");
+        JLabel lab3p = new JLabel("Контактный телефон:");
         pane2.add(lab3p);
         pane2.add(field3p);
 
         field4p = new JTextField(35);
-        JLabel lab4p = new JLabel("Примечание/комментарий/степень срочности");
+        JLabel lab4p = new JLabel("Примечание/комментарий/степень срочности:");
         pane2.add(lab4p);
         pane2.add(field4p);
 
