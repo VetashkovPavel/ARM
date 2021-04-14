@@ -38,7 +38,7 @@ public class AdminOit13 extends JFrame {
     private static String entry;
 
     public AdminOit13() throws IOException {
-        super("Admin AGAT by P.A.Vetashkow");
+        super("Admin oit13 AGAT by P.A.Vetashkow");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container contain = getContentPane();
         contain.setLayout(new FlowLayout(FlowLayout.CENTER));

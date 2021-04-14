@@ -176,7 +176,7 @@ public class AdminOIT1 extends JFrame {
         kerio.setHorizontalAlignment(SwingConstants.CENTER);
         kerio.setPreferredSize(new Dimension(450, 45));
 
-       /*9 JButton buttlist = new JButton("Весь список заявок");
+       /* JButton buttlist = new JButton("Весь список заявок");
         buttlist.addActionListener(new AdminOIT1.ActListenerList());
 
         pane4.add(buttlist);
@@ -203,7 +203,7 @@ public class AdminOIT1 extends JFrame {
 
     }
 
-    class ActListenerList implements ActionListener {
+  /*  class ActListenerList implements ActionListener {
         public void actionPerformed(ActionEvent e) throws RuntimeException {
             JOptionPane.showMessageDialog(AdminOIT1.this,
                     "Открываем");
@@ -213,7 +213,7 @@ public class AdminOIT1 extends JFrame {
                 c.printStackTrace();
             }
         }
-    }
+    } */
 
     class ActListener implements ActionListener {
         public void actionPerformed(ActionEvent e) throws RuntimeException {

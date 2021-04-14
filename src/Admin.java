@@ -25,7 +25,7 @@ public class Admin extends JFrame {
     private static String entry;
 
     public Admin() throws IOException {
-        super("Admin AGAT by P.A.Vetashkow");
+        super("Admin oit17 AGAT by P.A.Vetashkow");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         Container contain = getContentPane();
         contain.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -185,7 +185,7 @@ public class Admin extends JFrame {
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
         broketext = new JTextArea(22, 48);
-        broketext.setEditable(false);
+        broketext.setEditable(true);
 
         pane4.add(new JScrollPane(broketext));
 
