@@ -66,8 +66,9 @@ public class Pooh extends JFrame {
 
         panelRadio=new JPanel(new GridLayout(0,2,6,4)); //табличное расположение
         panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
-        String[] brokens={" Нет Интернета или сети","1C не работает","Не включается ПК","Не работает телефон",
-                "Установить программы", "Принтеры, сканеры, МФУ", "ТО системного блока", "Помощь ч/з удаленный доступ"};
+        String[] brokens={" Нет Интернета/локальной сети","Не включается ПК","Проблемы с 1C","Не работает телефон",
+                "Установить программы",  "ТО системного блока", "Принтеры, сканеры, МФУ","Помощь ч/з удаленный доступ",
+                "Антивирусная защита", "Запрос официальной лицензии"};
         butgrp=new ButtonGroup();
         for (int i=0;i<brokens.length;i++){
             JRadioButton radio=new JRadioButton (brokens[i]);
@@ -117,9 +118,9 @@ public class Pooh extends JFrame {
         butt2p.setHorizontalAlignment(SwingConstants.CENTER);
         butt2p.setVerticalAlignment(SwingConstants.CENTER);
 
-        JLabel lab5p = new JLabel("ОБРАТИТЕ ВНИМАНИЕ: в связи со стихийной");
-        JLabel lab6p = new JLabel("загрузкой отдела (резкий всплеск возникших неисправностей), ");
-        JLabel lab7p = new JLabel("Ваши заявки могут быть обработаны спустя некоторое время.");
+        JLabel lab5p = new JLabel("ОБРАТИТЕ ВНИМАНИЕ: в связи со стихийной загрузкой");
+        JLabel lab6p = new JLabel("отдела (резкий всплеск возникших неисправностей), Ваши");
+        JLabel lab7p = new JLabel("заявки могут быть приняты отделом IT спустя некоторое время.");
         JLabel lab8p = new JLabel("Всплывающее окошко является подтверждением отправки заявки и");
         JLabel lab9p = new JLabel("дополнительной проверкой правильности указанной в ней информации");
         pane2.add(lab5p);
@@ -130,7 +131,7 @@ public class Pooh extends JFrame {
 
         getContentPane().setLayout(new GridLayout());
         contain.add(pane2, BorderLayout.CENTER);
-        setSize(510, 535);
+        setSize(510, 560);
         setVisible(true);
 
 
@@ -178,9 +179,9 @@ public class Pooh extends JFrame {
                 a.printStackTrace();
             }
             JOptionPane.showMessageDialog(Pooh.this,
-                    new String[]{"Заявка отправлена, проверьте, пожалуйста, всё ли верно указано: ",
+                    new String[]{"Заявка отправлена. Проверьте, пожалуйста, всё ли верно указано: ",
                             ""+broke +", пользователь "+ surname + ", отдел: " + place + ", тлф " + phone +". "+other+" ",
-                            " Благодарим за обращение в ОИТ!"});
+                            "Благодарим за обращение в ОИТ!"});
 
         }
     }

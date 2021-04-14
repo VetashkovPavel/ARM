@@ -176,7 +176,7 @@ public class AdminOIT1 extends JFrame {
         kerio.setHorizontalAlignment(SwingConstants.CENTER);
         kerio.setPreferredSize(new Dimension(450, 45));
 
-        JButton buttlist = new JButton("Весь список заявок");
+       /*9 JButton buttlist = new JButton("Весь список заявок");
         buttlist.addActionListener(new AdminOIT1.ActListenerList());
 
         pane4.add(buttlist);
@@ -185,17 +185,17 @@ public class AdminOIT1 extends JFrame {
         buttlist.setFocusPainted(false);
         buttlist.setContentAreaFilled(true);
         buttlist.setHorizontalAlignment(SwingConstants.CENTER);
-        buttlist.setVerticalAlignment(SwingConstants.CENTER);
+        buttlist.setVerticalAlignment(SwingConstants.CENTER);*/
 
         pane1.add(pane4);
 
-        setSize(510, 580);
+        setSize(555, 560);
         setVisible(true);
 
         contain.add(pane1, "Admin only");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
-        broketext = new JTextArea(20, 42);
+        broketext = new JTextArea(22, 48);
         broketext.setEditable(false);
 
         pane4.add(new JScrollPane(broketext));

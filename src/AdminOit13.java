@@ -197,7 +197,7 @@ public class AdminOit13 extends JFrame {
         contain.add(pane1, "Admin only");
         setVisible(true);
         getContentPane().setLayout(new GridLayout());
-        broketext = new JTextArea(20, 42);
+        broketext = new JTextArea(22, 48);
         broketext.setEditable(false);
 
         pane4.add(new JScrollPane(broketext));
@@ -360,7 +360,7 @@ public class AdminOit13 extends JFrame {
                     out.flush();
                     out.close();
                     third.close();
-                    broketext.setText(broketext.getText()+"\r\n"+entry);
+                    broketext.setText(broketext.getText()+"\r\n"+"\r\n"+entry);
                     //JOptionPane.showMessageDialog(null, entry);
                 }
             } catch (IOException e) {
