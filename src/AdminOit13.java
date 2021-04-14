@@ -191,7 +191,7 @@ public class AdminOit13 extends JFrame {
 
         pane1.add(pane4);
 
-        setSize(510, 550);
+        setSize(555, 570);
         setVisible(true);
 
         contain.add(pane1, "Admin only");

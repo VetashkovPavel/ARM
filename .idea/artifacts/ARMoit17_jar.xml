@@ -1,9 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="ARMclient1.1:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/ARMclient1_1_jar</output-path>
+  <artifact type="jar" name="ARMoit17:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ARMoit17_jar</output-path>
     <root id="archive" name="ARM.jar">
       <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/src/Client/1/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/src/Admin17/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="ARM" />
     </root>
