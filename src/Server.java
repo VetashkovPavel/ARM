@@ -28,7 +28,7 @@ public class Server {
                 entry = input.readUTF();
                 System.out.println("прочитано: " + entry);
                 Date date = new Date();
-                BufferedWriter bwrtr = new BufferedWriter(new FileWriter("D:\\list.txt", true));
+                BufferedWriter bwrtr = new BufferedWriter(new FileWriter("C:\\ARM\\list.txt", true));
                 bwrtr.write(date.toString() + " " + entry + "\r\n");
                 bwrtr.close();
                 text=entry;

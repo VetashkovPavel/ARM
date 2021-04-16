@@ -2,14 +2,10 @@ import java.io.*;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.awt.*;
-import java.awt.event.ItemEvent;
 import java.awt.event.ActionEvent;
-import java.awt.event.ItemListener;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 public class Pooh extends JFrame {
 
@@ -33,40 +29,9 @@ public class Pooh extends JFrame {
         pane2.add(lab1p);
         pane2.add(field1p);
 
-
-        /*panelRadio = new JPanel(new GridLayout(0, 2, 6, 4)); //табличное расположение
+        panelRadio=new JPanel(new GridLayout(0,2,6,4));
         panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
-        // ButtonGroup butgrp=new ButtonGroup();// не понадобился, но пусть пока будет. потом удалю
-        JRadioButton inet = new JRadioButton("Нет интернета", false);
-        panelRadio.add(inet);
-        if (inet.isSelected()) {
-          //  if (broke == null) {
-                broke = inet.getText();
-          //  }
-        }
-        JRadioButton c = new JRadioButton("1C не работает", false);
-        panelRadio.add(c);
-        JRadioButton pk = new JRadioButton("Не включается ПК", false);
-        panelRadio.add(pk);
-        JRadioButton tlf = new JRadioButton("Не исправен телефон", false);
-        panelRadio.add(tlf);
-        JRadioButton soft = new JRadioButton("Установить ПО", false);
-        panelRadio.add(soft);
-        JRadioButton mfu = new JRadioButton("Заменить картридж в МФУ", false);
-        panelRadio.add(mfu);
-        JRadioButton printer = new JRadioButton("Проблемы с принтером", false);
-        panelRadio.add(printer);
-        JRadioButton technic = new JRadioButton("ТО системного блока", false);
-        panelRadio.add(technic);
-        JRadioButton remote = new JRadioButton("Помощь ч/з удаленный доступ", false);
-        panelRadio.add(remote);
-
-
-        pane2.add(panelRadio);*/
-
-        panelRadio=new JPanel(new GridLayout(0,2,6,4)); //табличное расположение
-        panelRadio.setBorder(BorderFactory.createTitledBorder("Выберите неисправность"));
-        String[] brokens={" Нет Интернета/локальной сети","Не включается ПК","Проблемы с 1C","Не работает телефон",
+        String[] brokens={" Нет Интернета / локальной сети","Не включается ПК","Проблемы с 1C","Не работает телефон",
                 "Установить программы",  "Системный блок, переферия", "Принтеры, сканеры, МФУ","Помощь ч/з удаленный доступ",
                 "Антивирусная защита", "Запрос официальной лицензии"};
         butgrp=new ButtonGroup();
@@ -133,15 +98,6 @@ public class Pooh extends JFrame {
         contain.add(pane2, BorderLayout.CENTER);
         setSize(510, 560);
         setVisible(true);
-
-
-        /*JOptionPane.showMessageDialog(Pooh.this,
-                new String[]{"Телефоны Отдела Информационных Технологий:",
-                        "4861 - Леонид, Алексей, Павел;",
-                        "4548 - Алексей (1С:Предприятие);",
-                        "4933 - Елена (1С:Предприятие, ЕСЭВМ);",
-                        "4945 - Александр Антонович, Андрей - связь;",
-                        "4457 - Владимир Борисович, руководитель подразделения."});*/
     }
 
     class ActListener implements ActionListener {
@@ -152,7 +108,7 @@ public class Pooh extends JFrame {
             other = field4p.getText();
             broke = butgrp.getSelection().getActionCommand();
             try {
-                socket = new Socket("PavelBook", 3345);                 //перевести на постоянный сервер
+                socket = new Socket("test-srv", 3345);
                 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
                 DataOutputStream dos = new DataOutputStream(socket.getOutputStream());
                 DataInputStream dis = new DataInputStream(socket.getInputStream());

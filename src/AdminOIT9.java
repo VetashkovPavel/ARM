@@ -17,9 +17,8 @@ import javax.swing.event.ChangeListener;
 
 public class AdminOIT9 extends JFrame {
     private static final long serialVersionUID = 1L;
-    public static JComboBox<String>box1, box2;
-    public JTextField field1, field2, field3, field4;
-    private  String ping, stat, check, trial, broke;
+    public JTextField field1;
+    private  String ping;
     public File pingfile;
     private static JTextArea broketext;
     private static String entry;
@@ -60,24 +59,6 @@ public class AdminOIT9 extends JFrame {
         pane4.add(lab1);
         pane4.add(field1);
 
-        /*JButton butt2 = new JButton("Установить IP динамически");
-        butt2.addActionListener(new AdminOIT9.ActListIp());
-        butt2.addChangeListener(new AdminOIT9.ChngListener());
-        butt2.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent e) {
-                System.out.println("Dynamic");
-            }
-        });
-        pane4.add(butt2);
-        butt2.setBorderPainted(true);
-        butt2.setFocusPainted(false);
-        butt2.setContentAreaFilled(true);
-
-        field2 = new JTextField(16);
-        JLabel lab2 = new JLabel("IP или имя хоста");
-        pane4.add(lab2);
-        pane4.add(field2);*/
-
         JButton butt3 = new JButton("Директория -Базы ESET Endpoint Antivirus-");
         butt3.addActionListener(new AdminOIT9.ActListNod());
         butt3.addChangeListener(new AdminOIT9.ChngListener());
@@ -89,31 +70,7 @@ public class AdminOIT9 extends JFrame {
         pane4.add(butt3);
         butt3.setBorderPainted(true);
         butt3.setFocusPainted(false);
-        butt3.setContentAreaFilled(true);/*
-
-        field3 = new JTextField(16);
-        JLabel lab3 = new JLabel("IP, имя MAC хоста");
-        pane4.add(lab3);
-        pane4.add(field3);
-
-        JButton butt41 = new JButton("Trial reset RViewer");
-        butt41.addActionListener(new AdminOIT9.ActListTrial());
-        butt41.addChangeListener(new AdminOIT9.ChngListener());
-        butt41.addItemListener(new ItemListener() {
-            public void itemStateChanged(ItemEvent e) {
-                System.out.println("default lan");  // Лёхин батник
-            }
-        });
-        pane4.add(butt41);
-        butt41.setBorderPainted(true);
-        butt41.setFocusPainted(false);
-        butt41.setContentAreaFilled(true);
-
-        field4 = new JTextField(16);
-        JLabel lab4 = new JLabel("IP, имя MAC хоста");
-        pane4.add(lab4);
-        pane4.add(field4);*/
-
+        butt3.setContentAreaFilled(true);
 
         JButton butt5 = new JButton("Active Directory");
         butt5.addActionListener(new AdminOIT9.ActListAD());
@@ -278,21 +235,6 @@ public class AdminOIT9 extends JFrame {
         }
     }
 
-    /*class ActListIp implements ActionListener {
-        public void actionPerformed(ActionEvent e) throws NullPointerException {
-            try {
-                if (stat == null) {
-                    stat = field2.getText();
-                }
-
-                JOptionPane.showMessageDialog(AdminOIT9.this,
-                        "Настройки установлены " + stat);
-            } catch (Exception a) {
-                a.printStackTrace();
-            }
-        }
-    }*/
-
     class ActListNod implements ActionListener {
         public void actionPerformed(ActionEvent e) throws NullPointerException {
             try {
@@ -307,20 +249,6 @@ public class AdminOIT9 extends JFrame {
         }
     }
 
-    /*class ActListTrial implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            try {
-                if (trial == null) {
-                    trial = field4.getText();
-                }
-                Process proc = Runtime.getRuntime().exec("cmd /C start C:\\Users\\oit17\\Desktop\\batping.bat");
-            } catch (Exception a) {
-                a.printStackTrace();
-            }
-            JOptionPane.showMessageDialog(AdminOIT9.this,
-                    "Демонстрационный период у " + trial + " будет сброшен. Подключайтесь через минуту");
-        }
-    }*/
 
     class ChngListener implements ChangeListener {
         public void stateChanged(ChangeEvent e) {
@@ -348,7 +276,6 @@ public class AdminOIT9 extends JFrame {
                     out.close();
                     seventh.close();
                     broketext.setText(broketext.getText()+"\r\n"+"\r\n"+entry);
-                    //JOptionPane.showMessageDialog(null, entry);
                 }
             } catch (IOException e) {
                 e.printStackTrace();
